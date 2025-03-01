@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import { Header } from './components'
+import { Header, Footer } from './components'
 import styled from 'styled-components'
 
 const Content = styled.main`
@@ -12,8 +12,6 @@ const H2 = styled.h2`
 	text-align: center;
 `
 
-const Footer = () => <footer>Футер</footer>
-
 export const App = () => {
 	return (
 		<>
@@ -22,12 +20,12 @@ export const App = () => {
 				<H2>Контент страницы</H2>
 				<Routes>
 					<Route path='/' element={<div>Главная страница</div>} />
+					<Route path='/accounts' element={<div>Счета</div>} />
 					<Route path='/login' element={<div>Авторизация</div>} />
 					<Route path='/register' element={<div>Регистрация</div>} />
 					<Route path='/history' element={<div>История операций</div>} />
 					<Route path='/categories' element={<div>Категории</div>} />
-					<Route path='/accounts' element={<div>Счета</div>} />
-					<Route path='/user' element={<div>Пользователь</div>} />
+					<Route path='user' element={<div>Пользователь</div>} />
 					<Route path='*' element={<div>Ошибка</div>} />
 				</Routes>
 			</Content>

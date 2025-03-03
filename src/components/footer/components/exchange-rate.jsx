@@ -39,10 +39,10 @@ export const ExchangeRate = styled(ExchangeRateContainer)`
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	background: #66b2a8;
+	background: var(--blue);
 	border-radius: 8px;
 	height: 60px;
-	box-shadow: 0 4px 8px #292734 inset;
+	box-shadow: 0 -2px 8px var(--brown) inset;
 	padding: 10px 14px;
 `
 const List = styled.ul`

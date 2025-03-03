@@ -1,15 +1,16 @@
 import { Routes, Route } from 'react-router-dom'
 import { Header, Footer } from './components'
+import { SignInForm } from './pages'
 import styled from 'styled-components'
 
 const Content = styled.main`
-	padding: 128px 70px 60px 70px;
-	background: #fde5c9;
+	display: flex;
+	// flex-direction: column;
+	// justify-content: center;
+	// align-items: center;
 	min-height: 100vh;
-`
-
-const H2 = styled.h2`
-	text-align: center;
+	background: #fde5c9;
+	padding: 120px 70px 80px 70px;
 `
 
 export const App = () => {
@@ -17,11 +18,10 @@ export const App = () => {
 		<>
 			<Header />
 			<Content>
-				<H2>Контент страницы</H2>
 				<Routes>
 					<Route path='/' element={<div>Главная страница</div>} />
 					<Route path='/accounts' element={<div>Счета</div>} />
-					<Route path='/login' element={<div>Авторизация</div>} />
+					<Route path='/login' element={<SignInForm />} />
 					<Route path='/register' element={<div>Регистрация</div>} />
 					<Route path='/history' element={<div>История операций</div>} />
 					<Route path='/categories' element={<div>Категории</div>} />

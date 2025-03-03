@@ -28,14 +28,14 @@ const Li = styled.li`
 const Link = styled(NavLink)`
 	list-style-type: none;
 	text-decoration: none;
-	color: #4b3d3d;
+	color: var(--brown);
 	font-weight: 500;
 
 	&:hover {
-		color: #66b2a8;
+		color: var(--blue);
 	}
 	&.active {
-		color: #d42a5b;
+		color: var(--pink);
 		font-weight: 600;
 	}
 `

@@ -25,7 +25,7 @@ export const Footer = styled(FooterContainer)`
 	align-items: center;
 	height: 80px;
 	padding: 10px 70px;
-	background: #98fb98;
+	background: var(--green);
 `
 const TextBlock = styled.div`
 	display: flex;

@@ -17,6 +17,6 @@ export const Header = styled(HeaderContainer)`
 	justify-content: space-between;
 	height: 120px;
 	padding: 10px 70px;
-	background: #98fb98;
+	background: var(--green);
 	align-items: center;
 `

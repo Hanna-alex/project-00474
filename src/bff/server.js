@@ -2,7 +2,7 @@ import { addUser } from './add-user'
 import { getUser } from './get-user'
 import { createSission } from './create-session'
 
-export const sevrev = {
+export const server = {
 	async authorize(authLogin, authPassword) {
 		const user = await getUser(authLogin)
 

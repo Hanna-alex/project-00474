@@ -1,6 +1,15 @@
 @import url(fonts/font-awesome.css);
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+	--green: #98fb98;
+	--blue: #66b2a8;
+	--pink: #d42a5b;
+	--brown: #4b3d3d;
+	--beige: #fde5c9;
+	--white: #fff;
+	--shadow: rgba(75, 61, 61, 0.25);
+}
 * {
 	margin: 0;
 	padding: 0;
@@ -12,20 +21,39 @@ body,
 	font-family: 'Roboto Condensed', serif;
 	font-size: 16px;
 	min-height: 100vh;
-	color: #4b3d3d;
+	color: var(--brown);
 }
 
 .test {
 	text-decoration: none;
-	color: #4b3d3d;
+	color: var(--brown);
 	font-weight: 600;
 	display: flex;
-	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+
 	list-style: none;
-	padding: 10px 14px;
-	background: #66b2a8;
+	padding: 30px 20px;
+	background: var(--blue);
 	border-radius: 8px;
 	box-shadow: 0 4px 1px #292929 inset;
+	font-weight: 500;
+	font-style: 26px;
+	letter-spacing: 1px;
+	max-width: 370px;
+	border-radius: 8px;
+	padding: 13px 20px;
+	background: var(--pink);
+	outline: none;
+	border: none;
+	cursor: move;
+	justify-content: flex-start;
+	flex-basis: fill;
+	width: 320px;
+	font-size: 32px;
+	box-shadow: 1px 2px 8px rgba(75, 61, 61, 0.25);
+	transition: ease 0.2s;
+}
+
+:focus {
 }

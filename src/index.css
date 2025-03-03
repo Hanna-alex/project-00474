@@ -25,35 +25,4 @@ body,
 }
 
 .test {
-	text-decoration: none;
-	color: var(--brown);
-	font-weight: 600;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-
-	list-style: none;
-	padding: 30px 20px;
-	background: var(--blue);
-	border-radius: 8px;
-	box-shadow: 0 4px 1px #292929 inset;
-	font-weight: 500;
-	font-style: 26px;
-	letter-spacing: 1px;
-	max-width: 370px;
-	border-radius: 8px;
-	padding: 13px 20px;
-	background: var(--pink);
-	outline: none;
-	border: none;
-	cursor: move;
-	justify-content: flex-start;
-	flex-basis: fill;
-	width: 320px;
-	font-size: 32px;
-	box-shadow: 1px 2px 8px rgba(75, 61, 61, 0.25);
-	transition: ease 0.2s;
-}
-
-:focus {
 }

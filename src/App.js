@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { Header, Footer } from './components'
-import { SignInForm } from './pages'
+import { SignInForm, StartPage } from './pages'
 import styled from 'styled-components'
 
 const Content = styled.main`
@@ -9,7 +9,7 @@ const Content = styled.main`
 	// justify-content: center;
 	// align-items: center;
 	min-height: 100vh;
-	background: #fde5c9;
+	background: #98fb98;
 	padding: 120px 70px 80px 70px;
 `
 
@@ -25,7 +25,9 @@ export const App = () => {
 					<Route path='/register' element={<div>Регистрация</div>} />
 					<Route path='/history' element={<div>История операций</div>} />
 					<Route path='/categories' element={<div>Категории</div>} />
-					<Route path='user' element={<div>Пользователь</div>} />
+					<Route path='/user' element={<div>Пользователь</div>} />
+					<Route path='/start' element={<StartPage />} />
+
 					<Route path='*' element={<div>Ошибка</div>} />
 				</Routes>
 			</Content>

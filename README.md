@@ -40,11 +40,11 @@
 
 ### Схема для redux store (на клиенте/ отображение)
 
-    - user: id / login / email
-    - Accouts: массив счетов => id / type / name / icon / comment / balance / created_at
-    - Accout: id / type / name / icon / comment / balance / created_at
-    - Transactions: массив транзакций => id / type / name / icon / comment / amount / created_at
-    - Transaction: id / type / name / icon / comment / amount / created_at
+    - user: id / login / email / session
+    - accouts: массив счетов => id / type / name / icon / comment / balance / created_at
+    - accout: id / type / name / icon / comment / balance / created_at
+    - transactions: массив транзакций => id / type / name / icon / comment / amount / created_at
+    - transaction: id / type / name / icon / comment / amount / created_at
     - categories: массив категорий пользователя / id / icon / name
     - category: id / icon / name / type
 

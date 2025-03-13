@@ -1,33 +1,43 @@
 {
-	"users": [
+  "users": [
     {
-      "id": 1,
-      "name": "Иван Иванов",
-      "email": "ivan.ivanov@example.com",
-      "created_at": "2023-01-01"
+      "id": "1",
+      "login": "Hanna-alex",
+	  "avatar": "https://wallpapershome.com/images/pages/ico_v/25082.jpg",
+      "password": "123!qQ123",
+      "created_at": "2023-01-01",
+      "update_at": ""
     },
     {
-      "id": 2,
-      "name": "Анна Смирнова",
-      "email": "anna.smirnova@example.com",
+      "id": "2",
+      "login": "Анна Смирнова",
+	  "avatar": "",
+      "password": "123!qQ123",
       "created_at": "2023-02-15"
+    },
+    {
+      "id": "1d50",
+      "login": "15487",
+      "password": "456Qa!78",
+	  "avatar": "",
+      "created_at": "06/03/2025 17:51:36"
     }
   ],
   "accounts": [
     {
-      "id": 1,
+      "id": "1",
       "user_id": 1,
       "account_type": "Сберегательный",
-      "balance": 10000.00
+      "balance": 10000
     },
     {
-      "id": 2,
+      "id": "2",
       "user_id": 1,
       "account_type": "Текущий",
-      "balance": 2500.50
+      "balance": 2500.5
     },
     {
-      "id": 3,
+      "id": "3",
       "user_id": 2,
       "account_type": "Кредитный",
       "balance": -1500.75
@@ -35,46 +45,46 @@
   ],
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "user_id": 1,
       "name": "Зарплата"
     },
     {
-      "id": 2,
+      "id": "2",
       "user_id": 1,
       "name": "Покупки"
     },
     {
-      "id": 3,
+      "id": "3",
       "user_id": 2,
       "name": "Развлечения"
     }
   ],
   "transactions": [
     {
-      "id": 1,
+      "id": "1",
       "user_id": 1,
       "account_id": 1,
       "category_id": 1,
-      "amount": 5000.00,
+      "amount": 5000,
       "date": "2023-03-01",
       "description": "Зарплата за февраль"
     },
     {
-      "id": 2,
+      "id": "2",
       "user_id": 1,
       "account_id": 2,
       "category_id": 2,
-      "amount": -1500.00,
+      "amount": -1500,
       "date": "2023-03-05",
       "description": "Покупка одежды"
     },
     {
-      "id": 3,
+      "id": "3",
       "user_id": 2,
       "account_id": 3,
       "category_id": 3,
-      "amount": -200.00,
+      "amount": -200,
       "date": "2023-03-10",
       "description": "Поход в кино"
     }

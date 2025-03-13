@@ -9,6 +9,7 @@ export const addUser = (login, password) =>
 		body: JSON.stringify({
 			login,
 			password,
+			avatar: '',
 			created_at: getDate(),
 		}),
 	})

@@ -29,13 +29,15 @@ const Link = styled(NavLink)`
 	list-style-type: none;
 	text-decoration: none;
 	color: var(--brown);
+	font-size: 18px;
 	font-weight: 500;
 
-	&:hover {
-		color: var(--blue);
-	}
 	&.active {
-		color: var(--pink);
+		color: var(--blue);
 		font-weight: 600;
+	}
+
+	&:hover {
+		color: var(--pink);
 	}
 `

@@ -1,16 +1,14 @@
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigate } from 'react-router-dom'
 import { server } from '../../bff'
+import { Link } from 'react-router-dom'
 import { Button, Input, ErrorMessage, H2 } from '../../components'
-import { setUser } from '../../actions'
 import styled from 'styled-components'
 
-const signInFormSchema = yup.object().shape({
+const signUpFormSchema = yup.object().shape({
 	login: yup
 		.string()
 		.required('Заполните логин')
@@ -32,9 +30,14 @@ const signInFormSchema = yup.object().shape({
 		)
 		.matches(/\d/, 'Неверно заполнен пароль. В пароле должна быть одна цифра')
 		.min(8, 'Неверно заполнен пароль. Пароль быть не меньше 8 символов'),
+
+	confirmPassword: yup
+		.string()
+		.required('Подтвердите пароль')
+		.oneOf([yup.ref('password')], 'Пароли должны совпадать'),
 })
 
-const SignInFormContainer = ({ className }) => {
+const SignUpFormContainer = ({ className }) => {
 	const {
 		register,
 		handleSubmit,
@@ -43,33 +46,35 @@ const SignInFormContainer = ({ className }) => {
 		defaultValues: {
 			login: '',
 			password: '',
+			confirmPassword: '',
 		},
-		resolver: yupResolver(signInFormSchema),
+		resolver: yupResolver(signUpFormSchema),
 	})
 
 	const [serverError, setServerError] = useState(null)
-
-	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
 	const onSubmit = ({ login, password }) => {
-		server.authorize(login, password).then(({ error, res }) => {
+		server.register(login, password).then(({ error, res }) => {
 			if (error) {
 				setServerError(`Ошибка запроса: ${error}`)
-				return
+			} else {
+				// Успех (перенаправление или установка состояния аутентификации)
+				navigate('/')
 			}
-			dispatch(setUser(res))
-			navigate('/')
 		})
 	}
 
-	const formError = errors?.login?.message || errors?.password?.message
+	const formError =
+		errors?.login?.message ||
+		errors?.password?.message ||
+		errors?.confirmPassword?.message
+
 	const errorMessage = formError || serverError
 
 	return (
 		<div className={className}>
-			<H2>Вход</H2>
-
+			<H2>Регистрация</H2>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<Input
 					type='text'
@@ -81,24 +86,30 @@ const SignInFormContainer = ({ className }) => {
 					placeholder='Пароль'
 					{...register('password', { onChange: () => setServerError(null) })}
 				/>
+				<Input
+					type='text'
+					placeholder='Повторите пароль'
+					{...register('confirmPassword', { onChange: () => setServerError(null) })}
+				/>
 				<div>
-					<Link to='/sign-up'>Регистрация</Link>
+					<Link to='/sign-in'>Вход</Link>
 					<Button type='submit' disabled={!!errorMessage}>
-						Войти
+						Зарегистрироватся
 					</Button>
+					{}
 				</div>
-				{errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
 			</form>
+			{errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
 		</div>
 	)
 }
 
-export const SignInForm = styled(SignInFormContainer)`
+export const SignUpForm = styled(SignUpFormContainer)`
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
 	width: 420px;
-	height: 486px;
+	height: 535px;
 	background: var(--green);
 	border-radius: 8px;
 	box-shadow: 1px 2px 8px var(--shadow);

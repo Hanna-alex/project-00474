@@ -1,6 +1,6 @@
 import { addUser } from './add-user'
 import { getUser } from './get-user'
-import { createSission } from './create-session'
+import { sessions } from './sessions'
 
 export const server = {
 	async authorize(authLogin, authPassword) {
@@ -22,7 +22,12 @@ export const server = {
 
 		return {
 			error: null,
-			res: createSission(),
+			res: {
+				id: user.id,
+				login: user.login,
+				avatar: user.avatar,
+				session: sessions.create(user),
+			},
 		}
 	},
 
@@ -40,7 +45,16 @@ export const server = {
 
 		return {
 			error: null,
-			res: createSission,
+			res: {
+				id: user.id,
+				login: user.login,
+				avatar: user.avatar,
+				session: sessions.create(user),
+			},
 		}
+	},
+
+	async logout(sission) {
+		sessions.remove(sission)
 	},
 }

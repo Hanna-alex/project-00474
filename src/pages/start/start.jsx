@@ -7,8 +7,10 @@ export const StartPageContainer = ({ className }) => (
 		<h3>
 			Планирование и контроль <br /> доступны всем
 		</h3>
-		<Link to='/login'>Вход</Link>
-		<Link to='/register'>Регистрация</Link>
+
+		<Link to='/sign-in'>Вход</Link>
+
+		<Link to='/sign-up'>Регистрация</Link>
 	</div>
 )
 

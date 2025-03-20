@@ -7,7 +7,13 @@ const initialUserState = {
 	session: null,
 }
 
-export const userReducer = (state = initialUserState, action) => {
+const loadUserSession = () => {
+	const savedUserSession = localStorage.getItem('userSession')
+
+	return savedUserSession ? JSON.parse(savedUserSession) : initialUserState
+}
+
+export const userReducer = (state = loadUserSession(), action) => {
 	switch (action.type) {
 		case ACTION_TYPE.SET_USER: {
 			const newState = {

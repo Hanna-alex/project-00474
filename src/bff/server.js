@@ -13,7 +13,7 @@ export const server = {
 			}
 		}
 
-		if (!authPassword === user.password) {
+		if (authPassword !== user.password) {
 			return {
 				error: 'Неверный пароль',
 				res: null,
@@ -32,16 +32,18 @@ export const server = {
 	},
 
 	async register(regLogin, regPassword) {
-		const user = await getUser(regLogin)
+		const existtedUser = await getUser(regLogin)
 
-		if (user) {
+		if (existtedUser) {
 			return {
 				error: 'Такой логин уже занят',
 				res: null,
 			}
 		}
 
-		await addUser(regLogin, regPassword)
+		const user = await addUser(regLogin, regPassword)
+
+		console.log(user)
 
 		return {
 			error: null,

@@ -3,10 +3,12 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { server } from '../../bff'
 import { Link } from 'react-router-dom'
 import { Button, Input, ErrorMessage, H2 } from '../../components'
 import styled from 'styled-components'
+import { setUser } from '../../actions'
 
 const signUpFormSchema = yup.object().shape({
 	login: yup
@@ -33,7 +35,7 @@ const signUpFormSchema = yup.object().shape({
 
 	confirmPassword: yup
 		.string()
-		.required('Подтвердите пароль')
+		.required('Заполните повтор пароль')
 		.oneOf([yup.ref('password')], 'Пароли должны совпадать'),
 })
 
@@ -52,6 +54,7 @@ const SignUpFormContainer = ({ className }) => {
 	})
 
 	const [serverError, setServerError] = useState(null)
+	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
 	const onSubmit = ({ login, password }) => {
@@ -59,7 +62,7 @@ const SignUpFormContainer = ({ className }) => {
 			if (error) {
 				setServerError(`Ошибка запроса: ${error}`)
 			} else {
-				// Успех (перенаправление или установка состояния аутентификации)
+				dispatch(setUser(res))
 				navigate('/')
 			}
 		})

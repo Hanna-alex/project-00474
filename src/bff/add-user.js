@@ -12,4 +12,4 @@ export const addUser = (login, password) =>
 			avatar: '',
 			created_at: getDate(),
 		}),
-	})
+	}).then((createtUser) => createtUser.json())

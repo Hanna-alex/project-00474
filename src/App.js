@@ -12,7 +12,7 @@ export const App = () => {
 		<>
 			{session && <Header />}
 
-			<ContentApp>
+			<ContentApp session={session}>
 				<Routes>
 					{!session ? (
 						<>

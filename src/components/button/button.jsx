@@ -7,12 +7,13 @@ const ButtonContainer = ({ className, children, ...props }) => (
 )
 
 export const Button = styled(ButtonContainer)`
-	border-radius: 8px;
+	width: ${({ width }) => width || `100%`};
 	outline: none;
 	border: none;
+	border-radius: 8px;
 	background: var(--blue);
 	color: var(--brown);
-	font-size: 18px;
+	font-size: ${({ fontSize }) => fontSize || '18px'};
 	font-weight: 600;
 	letter-spacing: 1px;
 	cursor: pointer;

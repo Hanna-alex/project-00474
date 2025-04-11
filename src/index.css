@@ -4,9 +4,9 @@
 :root {
 	--green: #98fb98;
 	--blue: #66b2a8;
-	--pink: #d42a5b;
-	--brown: #4b3d3d;
-	--beige: #fde5c9;
+	--pink: #e91e63;
+	--brown: #5d3a3a;
+	--beige: #f5e1c0;
 	--white: #fff;
 	--shadow: rgba(75, 61, 61, 0.25);
 }
@@ -25,17 +25,12 @@ body,
 }
 img {
 	width: 100%;
-	height: auto;
+	height: 100%;
 	object-fit: cover;
 }
 
 .test {
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	font-weight: 500;
-	text-align: center;
-
-	margin-right: 8px;
 }

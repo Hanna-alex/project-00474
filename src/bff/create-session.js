@@ -1,5 +1,5 @@
 export const createSission = () => {
-
+	// удалить
 	const session = {
 		logout() {
 			Object.keys(session).forEach((key) => {

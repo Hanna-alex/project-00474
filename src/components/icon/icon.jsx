@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-const IconContainer = ({ iconName, className, size }) => (
+const IconContainer = ({ iconName, className, props }) => (
 	<i className={`fa fa-${iconName} ${className}`} />
 )
 
 export const Icon = styled(IconContainer)`
-	font-size: ${(props) => props.size || '44px'};
+	font-size: ${({ size }) => size || '44px'};
 	color: var(--brown);
 `

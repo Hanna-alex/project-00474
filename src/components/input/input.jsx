@@ -14,7 +14,7 @@ export const Input = styled(InputContainer)`
 	background: var(--beige);
 	transition: all ease 0.3s;
 	padding: 13px 20px;
-	margin-bottom: 24px;
+	margin-bottom: ${({ mb }) => mb || '24px'};
 
 	&:hover {
 		box-shadow: 0px 4px 4px var(--shadow);

@@ -1,38 +1,14 @@
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
-import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigate } from 'react-router-dom'
-import { server } from '../../bff'
+import { useServerRequest } from '../../hooks'
 import { Button, Input, ErrorMessage, H2 } from '../../components'
 import { setUser } from '../../actions'
+import { signInFormSchema } from '../../validation-schemas'
 import styled from 'styled-components'
-
-const signInFormSchema = yup.object().shape({
-	login: yup
-		.string()
-		.required('Заполните логин')
-		.matches(
-			/^[a-zA-Z0-9_-]+$/,
-			'Неверно заполнен логин. Допускаются только буквы, цифры, тире и нежнее подчеркивание',
-		)
-		.min(3, 'Неверно заполнен логин. Минимум 3 символа')
-		.max(16, 'Не верно заполнен логин. Максимум 16 символов'),
-
-	password: yup
-		.string()
-		.required('Заполните пароль')
-		.matches(/[^\w\d]/gi, 'Неверно заполнен пароль. В пароле должен быть один спецсимвол')
-		.matches(/[A-Z]/, 'Неверно заполнен пароль. В пароле должна быть одна большая буква')
-		.matches(
-			/[a-z]/,
-			'Неверно заполнен пароль. В пароле должна быть одна маленькая буква',
-		)
-		.matches(/\d/, 'Неверно заполнен пароль. В пароле должна быть одна цифра')
-		.min(8, 'Неверно заполнен пароль. Пароль быть не меньше 8 символов'),
-})
 
 const SignInFormContainer = ({ className }) => {
 	const {
@@ -48,12 +24,13 @@ const SignInFormContainer = ({ className }) => {
 	})
 
 	const [serverError, setServerError] = useState(null)
+	const serverRequest = useServerRequest()
 
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
 	const onSubmit = ({ login, password }) => {
-		server.authorize(login, password).then(({ error, res }) => {
+		serverRequest('authorize', login, password).then(({ error, res }) => {
 			if (error) {
 				setServerError(`Ошибка запроса: ${error}`)
 				return
@@ -83,7 +60,7 @@ const SignInFormContainer = ({ className }) => {
 				/>
 				<div>
 					<Link to='/sign-up'>Регистрация</Link>
-					<Button type='submit' disabled={!!errorMessage}>
+					<Button type='submit' disabled={!!errorMessage} width={'120px'}>
 						Войти
 					</Button>
 				</div>

@@ -3,7 +3,8 @@ import { ACTION_TYPE } from '../actions'
 const initialUserState = {
 	id: null,
 	login: null,
-	avatar: '',
+	avatar: null,
+	email: null,
 	session: null,
 }
 
@@ -28,6 +29,12 @@ export const userReducer = (state = loadUserSession(), action) => {
 			return {
 				...initialUserState,
 			}
+		}
+		case ACTION_TYPE.UPDATE_USER: {
+			const updatedState = { ...state, ...action.payload }
+
+			localStorage.setItem('userSession', JSON.stringify(updatedState))
+			return updatedState
 		}
 		default:
 			return state

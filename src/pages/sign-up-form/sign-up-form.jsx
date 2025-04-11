@@ -1,43 +1,14 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { server } from '../../bff'
+import { useServerRequest } from '../../hooks'
 import { Link } from 'react-router-dom'
 import { Button, Input, ErrorMessage, H2 } from '../../components'
-import styled from 'styled-components'
+import { signUpFormSchema } from '../../validation-schemas'
 import { setUser } from '../../actions'
-
-const signUpFormSchema = yup.object().shape({
-	login: yup
-		.string()
-		.required('Заполните логин')
-		.matches(
-			/^[a-zA-Z0-9_-]+$/,
-			'Неверно заполнен логин. Допускаются только буквы, цифры, тире и нежнее подчеркивание',
-		)
-		.min(3, 'Неверно заполнен логин. Минимум 3 символа')
-		.max(16, 'Не верно заполнен логин. Максимум 16 символов'),
-
-	password: yup
-		.string()
-		.required('Заполните пароль')
-		.matches(/[^\w\d]/gi, 'Неверно заполнен пароль. В пароле должен быть один спецсимвол')
-		.matches(/[A-Z]/, 'Неверно заполнен пароль. В пароле должна быть одна большая буква')
-		.matches(
-			/[a-z]/,
-			'Неверно заполнен пароль. В пароле должна быть одна маленькая буква',
-		)
-		.matches(/\d/, 'Неверно заполнен пароль. В пароле должна быть одна цифра')
-		.min(8, 'Неверно заполнен пароль. Пароль быть не меньше 8 символов'),
-
-	confirmPassword: yup
-		.string()
-		.required('Заполните повтор пароль')
-		.oneOf([yup.ref('password')], 'Пароли должны совпадать'),
-})
+import styled from 'styled-components'
 
 const SignUpFormContainer = ({ className }) => {
 	const {
@@ -56,9 +27,10 @@ const SignUpFormContainer = ({ className }) => {
 	const [serverError, setServerError] = useState(null)
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
+	const serverRequest = useServerRequest()
 
 	const onSubmit = ({ login, password }) => {
-		server.register(login, password).then(({ error, res }) => {
+		serverRequest('register', login, password).then(({ error, res }) => {
 			if (error) {
 				setServerError(`Ошибка запроса: ${error}`)
 			} else {
@@ -96,7 +68,7 @@ const SignUpFormContainer = ({ className }) => {
 				/>
 				<div>
 					<Link to='/sign-in'>Вход</Link>
-					<Button type='submit' disabled={!!errorMessage}>
+					<Button type='submit' disabled={!!errorMessage} width={'250px'}>
 						Зарегистрироватся
 					</Button>
 					{}

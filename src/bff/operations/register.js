@@ -1,8 +1,9 @@
-import { getUser, addUser } from '../api'
+import { fetchUser, addUser } from '../api'
 import { sessions } from '../sessions'
+import { addDefaultCategories } from '../api'
 
 export const register = async (regLogin, regPassword) => {
-	const existtedUser = await getUser(regLogin)
+	const existtedUser = await fetchUser(regLogin)
 
 	if (existtedUser) {
 		return {
@@ -12,6 +13,8 @@ export const register = async (regLogin, regPassword) => {
 	}
 
 	const user = await addUser(regLogin, regPassword)
+
+	addDefaultCategories(user.id)
 
 	return {
 		error: null,

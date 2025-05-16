@@ -29,8 +29,11 @@ img {
 	object-fit: cover;
 }
 
+ul {
+	list-style: none;
+}
+
 .test {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	outline: none;
+	border: none;
 }

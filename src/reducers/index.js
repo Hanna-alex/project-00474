@@ -1,5 +1,5 @@
-export * from './accout-reducer'
-export * from './accouts-reducer'
+export * from './account-reducer'
+export * from './accounts-reducer'
 export * from './categories-reducer'
 export * from './category-reducer'
 export * from './transaction-reducer'

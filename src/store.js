@@ -2,8 +2,8 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { thunk } from 'redux-thunk'
 import {
 	userReducer,
-	accoutsReducer,
-	accoutReducer,
+	accountsReducer,
+	accountReducer,
 	transactionsReducer,
 	transactionReducer,
 	categoriesReducer,
@@ -12,8 +12,8 @@ import {
 
 const reducer = combineReducers({
 	user: userReducer,
-	accouts: accoutsReducer,
-	accout: accoutReducer,
+	accounts: accountsReducer,
+	account: accountReducer,
 	transactions: transactionsReducer,
 	transaction: transactionReducer,
 	categories: categoriesReducer,

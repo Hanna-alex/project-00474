@@ -1,18 +1,20 @@
 import { Routes, Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Header, Footer } from './components'
-import { StartPage, SignInForm, SignUpForm, User } from './pages'
+import { StartPage, SignInForm, SignUpForm, User, Accounts, Categories } from './pages'
 import { selectUserSession } from './selectors'
 import styled from 'styled-components'
+import { Icons } from './components/icons/icons'
 
 export const App = () => {
 	const session = useSelector(selectUserSession)
+	const isSession = !!session
 
 	return (
 		<>
-			{session && <Header />}
+			{!!session && <Header />}
 
-			<ContentApp session={session}>
+			<ContentApp sd={`${isSession}`}>
 				<Routes>
 					{!session ? (
 						<>
@@ -24,10 +26,11 @@ export const App = () => {
 					) : (
 						<>
 							<Route path='/' element={<div>Главная страница</div>} />
-							<Route path='/accounts' element={<div>Счета</div>} />
+							<Route path='/accounts' element={<Accounts />} />
 							<Route path='/history' element={<div>История операций</div>} />
-							<Route path='/categories' element={<div>Категории</div>} />
+							<Route path='/categories' element={<Categories />} />
 							<Route path='/user' element={<User />} />
+							<Route path='/icons' element={<Icons />} />
 							<Route
 								path='*'
 								element={<div>Ошибки зарегистрированных пользователей</div>}
@@ -47,8 +50,8 @@ const ContentApp = styled.main`
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	background: ${(props) => (props.session ? 'var(--beige)' : 'var(--green)')};
-	padding: ${(props) => (props.session ? '120px 70px 80px 70px' : '0px 70px')};
+	background: ${(props) => (props.sd ? 'var(--beige)' : 'var(--green)')};
+	padding: ${(props) => (props.sd ? '120px 70px 80px 70px' : '0px 70px')};
 `
 
 // cd ./project-00474

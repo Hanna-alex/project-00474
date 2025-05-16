@@ -4,6 +4,8 @@ import {
 	logout,
 	register,
 	updateUserData,
+	getUserAccounts,
+	getUserCategories,
 } from './operations'
 
 export const server = {
@@ -12,4 +14,6 @@ export const server = {
 	logout,
 	register,
 	updateUserData,
+	getUserAccounts,
+	getUserCategories,
 }

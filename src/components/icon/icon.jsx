@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-const IconContainer = ({ iconName, className, props }) => (
-	<i className={`fa fa-${iconName} ${className}`} />
+const IconContainer = ({ iconName, className, ...props }) => (
+	<i className={`fa fa-${iconName} ${className}`} {...props} />
 )
 
 export const Icon = styled(IconContainer)`

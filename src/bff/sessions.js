@@ -11,4 +11,8 @@ export const sessions = {
 	remove(hash) {
 		delete this.list[hash]
 	},
+
+	access(hash) {
+		return this.list.hasOwnProperty(hash) // не работает без сервера или хранение list в json файле
+	},
 }

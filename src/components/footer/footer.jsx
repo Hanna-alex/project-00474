@@ -23,9 +23,11 @@ export const Footer = styled(FooterContainer)`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	width: 1200px;
 	height: 80px;
-	padding: 10px 70px;
 	background: var(--green);
+	padding: 10px 70px;
+	margin: 0 auto;
 `
 const TextBlock = styled.div`
 	display: flex;

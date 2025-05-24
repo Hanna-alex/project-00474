@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { forwardRef } from 'react'
 
-const InputContainer = forwardRef(({ className, ...props }, ref) => (
+const InputContainer = forwardRef(({ className, marginBottom, ...props }, ref) => (
 	<input className={className} {...props} ref={ref} />
 ))
 
@@ -14,7 +14,7 @@ export const Input = styled(InputContainer)`
 	background: var(--beige);
 	transition: all ease 0.3s;
 	padding: 13px 20px;
-	margin-bottom: ${({ mb }) => mb || '24px'};
+	margin-bottom: ${({ marginBottom }) => marginBottom || '24px'};
 
 	&:hover {
 		box-shadow: 0px 4px 4px var(--shadow);

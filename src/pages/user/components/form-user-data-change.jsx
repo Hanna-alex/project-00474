@@ -103,7 +103,13 @@ const FormUserDataChangeContainer = ({ className, ...props }) => {
 				/>
 				{/* попробывать сделать добавление аватара как картинку  */}
 
-				<Button type='submit' disabled={!hasChanges() || !!errorMessage}>
+				<Button
+					type='submit'
+					disabled={!hasChanges() || !!errorMessage}
+					hoverStyles={{
+						'box-shadow': `1px 4px 4px var(--shadow)`,
+					}}
+				>
 					Изменить
 				</Button>
 			</form>
@@ -123,6 +129,7 @@ export const FormUserDataChange = styled(FormUserDataChangeContainer)`
 	flex-direction: column;
 	justify-content: center;
 	background: #98fb98ce;
+	border-radius: 8px;
 	padding: 40px;
 
 	& .formChange {

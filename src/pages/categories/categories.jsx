@@ -44,7 +44,7 @@ export const Categories = styled(CategoriesContainer)`
 	padding: 40px 0;
 
 	& .wrapper {
-		width: 500px;
+		width: 480px;
 		height: auto;
 		background: var(--green);
 		border-radius: 8px;

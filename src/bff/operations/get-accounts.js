@@ -1,7 +1,7 @@
-import { fetchUserAccounts } from '../api'
+import { fetchAccounts } from '../api'
 
-export const getUserAccounts = async (userSession, userId) => {
-	const accounts = await fetchUserAccounts(userId)
+export const getAccounts = async (userSession, userId) => {
+	const accounts = await fetchAccounts(userId)
 
 	if (!accounts) {
 		return {

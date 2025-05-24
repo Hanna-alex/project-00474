@@ -1,4 +1,4 @@
-import { AddButton } from '../add-button/abbButton'
+import { Button } from '../button/button'
 import { Icon } from '../icon/icon'
 import styled from 'styled-components'
 
@@ -13,7 +13,17 @@ const ListContainer = ({ className, list }) => (
 			</li>
 		))}
 		<li className='item'>
-			<AddButton />
+			<Button
+				width='70px'
+				height='70px'
+				borderRadius='50%'
+				background='var(--beige)'
+				marginBottom='4px'
+				size='34px'
+				hoverStyles={{ background: `var(--blue)` }}
+			>
+				<Icon iconName='plus' size='34px' />
+			</Button>
 			<span className='icon-name'>Добавить</span>
 		</li>
 	</ul>
@@ -31,11 +41,14 @@ export const List = styled(ListContainer)`
 		align-items: center;
 		cursor: pointer;
 		padding: 12px;
-		&:hover ${AddButton} {
-			background: var(--blue);
-		}
+		transition: all 0.3s ease-in-out;
+
 		&:hover .icon-wrapper {
 			box-shadow: 1px 4px 4px var(--shadow);
+		}
+
+		&:hover ${Button} {
+			background: var(--blue);
 		}
 	}
 

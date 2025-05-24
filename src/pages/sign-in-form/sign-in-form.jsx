@@ -60,7 +60,14 @@ const SignInFormContainer = ({ className }) => {
 				/>
 				<div>
 					<Link to='/sign-up'>Регистрация</Link>
-					<Button type='submit' disabled={!!errorMessage} width={'120px'}>
+					<Button
+						type='submit'
+						disabled={!!errorMessage}
+						width={'120px'}
+						hoverStyles={{
+							'box-shadow': `1px 4px 4px var(--shadow)`,
+						}}
+					>
 						Войти
 					</Button>
 				</div>

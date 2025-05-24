@@ -7,7 +7,9 @@
       "email": "007@wz.777",
       "password": "123!qQ123",
       "created_at": "19.03.2023 18:07:43",
-      "updated_at": "18.04.2025 13:50:36"
+      "updated_at": "18.04.2025 13:50:36",
+      "icon": "019",
+      "update_at": "24.05.2025 11:37:57"
     },
     {
       "id": "c5e7",
@@ -15,38 +17,44 @@
       "password": "aA1@1121211212",
       "avatar": "",
       "created_at": "16.05.2025 23:38:16"
+    },
+    {
+      "id": "48bc",
+      "login": "455",
+      "password": "456Qa!78",
+      "avatar": "",
+      "created_at": "17.05.2025 00:39:13"
     }
   ],
   "accounts": [
     {
       "id": "1",
       "user_id": 1,
-      "icon": "credit-card-alt",
-      "name": "Сберегательный",
-      "balance": 10000,
+      "icon": "eur",
+      "name": "Евро2",
+      "amount": 500,
       "currency": "RUB",
       "created_at": "19.03.2023 18:07:43",
-      "updated_at": ""
+      "update_at": "24.05.2025 15:05:22"
     },
     {
       "id": "2",
       "user_id": 1,
       "icon": "university",
       "name": "Текущий",
-      "balance": 2500.5,
+      "amount": 2500.5,
       "currency": "RUB",
       "created_at": "19.03.2023 18:07:43",
-      "updated_at": ""
+      "update_at": "24.05.2025 14:11:59"
     },
     {
       "id": "3",
       "user_id": 2,
       "icon": "university",
       "name": "Кредитный",
-      "balance": -1500.75,
+      "amount": -1500.75,
       "currency": "RUB",
-      "created_at": "19.03.2023 18:07:43",
-      "updated_at": ""
+      "created_at": "19.03.2023 18:07:43"
     }
   ],
   "categories": [
@@ -57,8 +65,7 @@
       "name": "Зарплата",
       "icon": "cc-mastercard",
       "color": "c7c9c10",
-      "created_at": "19.03.2023 18:07:43",
-      "updated_at": ""
+      "created_at": "19.03.2023 18:07:43"
     },
     {
       "id": "d002",
@@ -67,8 +74,7 @@
       "name": "Банк",
       "icon": "university",
       "color": "c7c9c10",
-      "created_at": "19.03.2023 18:07:43",
-      "updated_at": ""
+      "created_at": "19.03.2023 18:07:43"
     },
     {
       "id": "d003",
@@ -140,7 +146,6 @@
       "created_at": "19.03.2023 18:07:43",
       "updated_at": ""
     },
-
     {
       "id": "d010",
       "user_id": 1,
@@ -231,6 +236,87 @@
       "color": "c7c9c10",
       "user_id": "c5e7",
       "created_at": "16.05.2025 23:38:16"
+    },
+    {
+      "id": "d001",
+      "type": "income",
+      "name": "Зарплата",
+      "icon": "cc-mastercard",
+      "color": "c7c9c10",
+      "user_id": "48bc",
+      "created_at": "17.05.2025 00:39:13"
+    },
+    {
+      "id": "d002",
+      "type": "income",
+      "name": "Банк",
+      "icon": "university",
+      "color": "c7c9c10",
+      "user_id": "48bc",
+      "created_at": "17.05.2025 00:39:13"
+    },
+    {
+      "id": "d003",
+      "type": "income",
+      "name": "Другое",
+      "icon": "question-circle",
+      "color": "c7c9c10",
+      "user_id": "48bc",
+      "created_at": "17.05.2025 00:39:13"
+    },
+    {
+      "id": "d004",
+      "type": "expense",
+      "name": "Дом",
+      "icon": "home",
+      "color": "c7c9c10",
+      "user_id": "48bc",
+      "created_at": "17.05.2025 00:39:13"
+    },
+    {
+      "id": "d005",
+      "type": "expense",
+      "name": "Питомец",
+      "icon": "paw",
+      "color": "c7c9c10",
+      "user_id": "48bc",
+      "created_at": "17.05.2025 00:39:13"
+    },
+    {
+      "id": "d006",
+      "type": "expense",
+      "name": "Транспорт",
+      "icon": "bus",
+      "color": "c7c9c10",
+      "user_id": "48bc",
+      "created_at": "17.05.2025 00:39:13"
+    },
+    {
+      "id": "d007",
+      "type": "expense",
+      "name": "Здоровье",
+      "icon": "heartbeat",
+      "color": "c7c9c10",
+      "user_id": "48bc",
+      "created_at": "17.05.2025 00:39:13"
+    },
+    {
+      "id": "d008",
+      "type": "expense",
+      "name": "Развлечения",
+      "icon": "glass",
+      "color": "c7c9c10",
+      "user_id": "48bc",
+      "created_at": "17.05.2025 00:39:13"
+    },
+    {
+      "id": "d009",
+      "type": "expense",
+      "name": "Другое",
+      "icon": "question-circle",
+      "color": "c7c9c10",
+      "user_id": "48bc",
+      "created_at": "17.05.2025 00:39:13"
     }
   ],
   "transactions": [

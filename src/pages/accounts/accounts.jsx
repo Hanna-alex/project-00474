@@ -1,11 +1,10 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { H2, Icon } from '../../components'
+import { Outlet, useNavigate } from 'react-router-dom'
+import { Button, H2, Icon } from '../../components'
 import { useServerRequest } from '../../hooks'
-import { selectUserId } from '../../selectors'
-import { loadAccountsAsync } from '../../actions'
-import { selectUserAccounts } from '../../selectors'
-import { ACTION_TYPE } from '../../actions'
+import { selectUserId, selectUserAccounts } from '../../selectors'
+import { ACTION_TYPE, loadAccountsAsync } from '../../actions'
 import styled from 'styled-components'
 
 const AccountsContainer = ({ className }) => {
@@ -13,6 +12,7 @@ const AccountsContainer = ({ className }) => {
 	const requestSever = useServerRequest()
 	const userId = useSelector(selectUserId)
 	const accounts = useSelector(selectUserAccounts)
+	const [, setSelectedAccount] = useState(null)
 
 	useEffect(() => {
 		if (userId) {
@@ -21,28 +21,50 @@ const AccountsContainer = ({ className }) => {
 		}
 	}, [dispatch, requestSever, userId])
 
+	const navigate = useNavigate()
+
+	const openChangeForm = (selectAccount) => {
+		setSelectedAccount(selectAccount)
+		navigate('change', { state: { account: selectAccount } })
+	}
+
 	return (
 		<div className={className}>
+			<Outlet />
 			<H2>Счета</H2>
-
 			<ul className='list'>
 				{accounts.map((account) => (
-					<li className='item' key={account.id}>
-						<Icon iconName={account.icon} size='20px' />
-
+					<li className='item' key={account.id} onClick={() => openChangeForm(account)}>
+						<div className='icon'>
+							<Icon iconName={account.icon} size='20px' />
+						</div>
 						<span>{account.name}</span>
-						<span>
-							<b>{account.balance} </b>
+						<span className='num'>
+							<b>{account.amount} </b>
 							{account.currency}
 						</span>
 					</li>
 				))}
+				<li className='item'>
+					<Button
+						width='50px'
+						height='50px'
+						background='var(--beige)'
+						borderRadius='50%'
+						padding='0'
+						marginRight='12px'
+					>
+						<Icon iconName='plus' size='26px' />
+					</Button>
+					<span className='icon-name'>Добавить</span>
+				</li>
 			</ul>
 		</div>
 	)
 }
 
 export const Accounts = styled(AccountsContainer)`
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -50,15 +72,41 @@ export const Accounts = styled(AccountsContainer)`
 	width: 100%;
 
 	& .list {
-		display: flex;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
 		width: 100%;
 	}
 
 	& .item {
-		padding: 4px 8px;
+		display: flex;
+		align-items: center;
+		width: 320px;
+		border-radius: 8px;
+		background: var(--green);
+		padding: 10px 20px;
+		cursor: pointer;
+		transition: all 0.3s ease-in-out;
 	}
-	& span {
-		margin-left: 8px;
+
+	& .item:hover {
+		box-shadow: 1px 4px 4px var(--shadow);
+	}
+
+	& .icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		background: var(--beige);
+		margin-right: 12px;
+	}
+	& .num {
+		margin-left: auto;
+	}
+	& .icon-name {
+		margin-left: 16px;
 	}
 `

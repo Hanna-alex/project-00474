@@ -31,6 +31,7 @@ const Link = styled(NavLink)`
 	color: var(--brown);
 	font-size: 18px;
 	font-weight: 500;
+	transition: all 0.3s ease-in-out;
 
 	&.active {
 		color: var(--blue);

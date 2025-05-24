@@ -48,10 +48,23 @@ const UserContainer = ({ className }) => {
 				</div>
 			</div>
 			<div className='btnGroup'>
-				<Button onClick={openFormChange} fontSize='16px'>
+				<Button
+					onClick={openFormChange}
+					fontSize='16px'
+					hoverStyles={{
+						'box-shadow': `1px 4px 4px var(--shadow)`,
+					}}
+				>
 					Изменить данные
 				</Button>
-				<Button onClick={handleClick} width={'120px'} fontSize='16px'>
+				<Button
+					onClick={handleClick}
+					width='120px'
+					fontSize='16px'
+					hoverStyles={{
+						'box-shadow': `1px 4px 4px var(--shadow)`,
+					}}
+				>
 					Выйти
 					{/* <Icon iconName='sign-out' size='22px' /> */}
 				</Button>

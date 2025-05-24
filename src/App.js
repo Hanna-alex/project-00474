@@ -5,6 +5,7 @@ import { StartPage, SignInForm, SignUpForm, User, Accounts, Categories } from '.
 import { selectUserSession } from './selectors'
 import styled from 'styled-components'
 import { Icons } from './components/icons/icons'
+import { AccountChangeForm } from './pages/accounts/components/change-form'
 
 export const App = () => {
 	const session = useSelector(selectUserSession)
@@ -14,7 +15,7 @@ export const App = () => {
 		<>
 			{!!session && <Header />}
 
-			<ContentApp sd={`${isSession}`}>
+			<ContentApp $session={isSession}>
 				<Routes>
 					{!session ? (
 						<>
@@ -26,7 +27,9 @@ export const App = () => {
 					) : (
 						<>
 							<Route path='/' element={<div>Главная страница</div>} />
-							<Route path='/accounts' element={<Accounts />} />
+							<Route path='/accounts' element={<Accounts />}>
+								<Route path='change' element={<AccountChangeForm />}></Route>
+							</Route>
 							<Route path='/history' element={<div>История операций</div>} />
 							<Route path='/categories' element={<Categories />} />
 							<Route path='/user' element={<User />} />
@@ -45,13 +48,17 @@ export const App = () => {
 }
 
 const ContentApp = styled.main`
+	position: relative;
+	z-index: 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	width: 1200px;
 	min-height: 100vh;
-	background: ${(props) => (props.sd ? 'var(--beige)' : 'var(--green)')};
-	padding: ${(props) => (props.sd ? '120px 70px 80px 70px' : '0px 70px')};
+	background: ${(props) => (props.$session ? 'var(--beige)' : 'var(--green)')};
+	padding: ${(props) => (props.$session ? '120px 70px 80px' : '0px 70px')};
+	margin: 0 auto;
 `
 
 // cd ./project-00474

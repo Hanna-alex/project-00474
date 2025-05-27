@@ -10,8 +10,9 @@ import {
 } from '../../../selectors'
 import { ErrorMessage, H2, Input, Button, Icon } from '../../../components'
 import { createFormUserDataChangeShema } from '../../../validation-schemas'
-import { updateUserData } from '../../../actions'
+import { updateUser } from '../../../actions'
 import { useServerRequest } from '../../../hooks'
+import { getModifiedData, hasChanges } from '../../../utils'
 import styled from 'styled-components'
 
 const FormUserDataChangeContainer = ({ className, ...props }) => {
@@ -52,19 +53,14 @@ const FormUserDataChangeContainer = ({ className, ...props }) => {
 	const closeFormChange = () => props.setIsOpenFormChange(false)
 
 	const onSubmit = (data) => {
-		const changeData = Object.entries(data).reduce((acc, [key, value]) => {
-			if (value !== currentUser[key]) {
-				acc[key] = value
-			}
-			return acc
-		}, {})
+		const changeData = getModifiedData(data, currentUser)
 
-		serverRequest('updateUserData', userId, changeData).then(({ error, res }) => {
+		serverRequest('updateUser', userId, changeData).then(({ error, res }) => {
 			if (error) {
 				setServerError(error)
 				return
 			}
-			dispatch(updateUserData(res))
+			dispatch(updateUser(res))
 			closeFormChange()
 		})
 	}
@@ -74,10 +70,6 @@ const FormUserDataChangeContainer = ({ className, ...props }) => {
 	const errorMessage = formError || serverError
 
 	const formValues = watch()
-
-	const hasChanges = () => {
-		return Object.entries(formValues).some(([key, value]) => value !== currentUser[key])
-	}
 
 	return (
 		<div className={className}>
@@ -105,7 +97,7 @@ const FormUserDataChangeContainer = ({ className, ...props }) => {
 
 				<Button
 					type='submit'
-					disabled={!hasChanges() || !!errorMessage}
+					disabled={!hasChanges(formValues, currentUser) || !!errorMessage}
 					hoverStyles={{
 						'box-shadow': `1px 4px 4px var(--shadow)`,
 					}}

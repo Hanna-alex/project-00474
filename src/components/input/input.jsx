@@ -16,11 +16,20 @@ export const Input = styled(InputContainer)`
 	padding: 13px 20px;
 	margin-bottom: ${({ marginBottom }) => marginBottom || '24px'};
 
+	-webkit-appearance: none; /* Chrome, Safari, Edge */
+	-moz-appearance: none; /* Firefox */
+	appearance: none;
+
 	&:hover {
 		box-shadow: 0px 4px 4px var(--shadow);
 	}
 
 	&:focus {
 		box-shadow: 1px 2px 4px var(--blue) inset;
+	}
+	&::-webkit-inner-spin-button,
+	&::-webkit-calendar-picker-indicator {
+		display: none;
+		-webkit-appearance: none; /* Chrome/Safari */
 	}
 `

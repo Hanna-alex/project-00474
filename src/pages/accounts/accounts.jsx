@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { Button, H2, Icon } from '../../components'
@@ -12,7 +12,6 @@ const AccountsContainer = ({ className }) => {
 	const requestSever = useServerRequest()
 	const userId = useSelector(selectUserId)
 	const accounts = useSelector(selectUserAccounts)
-	const [, setSelectedAccount] = useState(null)
 
 	useEffect(() => {
 		if (userId) {
@@ -23,9 +22,9 @@ const AccountsContainer = ({ className }) => {
 
 	const navigate = useNavigate()
 
-	const openChangeForm = (selectAccount) => {
-		setSelectedAccount(selectAccount)
-		navigate('change', { state: { account: selectAccount } })
+	const openForm = (selectAccount = null) => {
+		if (!selectAccount) navigate('add')
+		else navigate('change', { state: { account: selectAccount } })
 	}
 
 	return (
@@ -34,7 +33,7 @@ const AccountsContainer = ({ className }) => {
 			<H2>Счета</H2>
 			<ul className='list'>
 				{accounts.map((account) => (
-					<li className='item' key={account.id} onClick={() => openChangeForm(account)}>
+					<li className='item' key={account.id} onClick={() => openForm(account)}>
 						<div className='icon'>
 							<Icon iconName={account.icon} size='20px' />
 						</div>
@@ -45,7 +44,7 @@ const AccountsContainer = ({ className }) => {
 						</span>
 					</li>
 				))}
-				<li className='item'>
+				<li className='item' onClick={() => openForm()}>
 					<Button
 						width='50px'
 						height='50px'

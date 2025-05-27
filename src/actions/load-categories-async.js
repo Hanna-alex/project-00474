@@ -1,7 +1,7 @@
 import { setCategories } from './set-categories'
 
 export const loadCategoriesAsync = (requestSever, useId) => async (dispatch) => {
-	requestSever('getUserCategories', useId).then(({ error, res }) => {
+	requestSever('getCategories', useId).then(({ error, res }) => {
 		if (!error) {
 			const grouped = res.reduce(
 				(acc, cat) => {

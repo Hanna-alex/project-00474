@@ -2,17 +2,17 @@ import { Button } from '../button/button'
 import { Icon } from '../icon/icon'
 import styled from 'styled-components'
 
-const ListContainer = ({ className, list }) => (
+const ListContainer = ({ className, list, openForm }) => (
 	<ul className={className}>
 		{list.map((item) => (
-			<li className='item' key={item.id}>
+			<li className='item' key={item.id} onClick={() => openForm(item)}>
 				<div className='icon-wrapper'>
 					<Icon iconName={item.icon} size='34px' />
 				</div>
 				<span className='icon-name'>{item.name}</span>
 			</li>
 		))}
-		<li className='item'>
+		<li className='item' onClick={() => openForm()}>
 			<Button
 				width='70px'
 				height='70px'

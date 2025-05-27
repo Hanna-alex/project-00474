@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { H3, List } from '../../components'
 import { useServerRequest } from '../../hooks'
 import { selectUserId } from '../../selectors'
@@ -22,15 +23,22 @@ const CategoriesContainer = ({ className }) => {
 		}
 	}, [dispatch, requestSever, userId])
 
+	const navigate = useNavigate()
+
+	const openForm = (selectAccount = null) => {
+		if (!selectAccount) navigate('add')
+		else navigate('change', { state: { account: selectAccount } })
+	}
+
 	return (
 		<div className={className}>
 			<div className='wrapper'>
 				<H3>Доходы</H3>
-				<List list={incomeCategories} />
+				<List list={incomeCategories} openForm={openForm} />
 			</div>
 			<div className='wrapper'>
 				<H3>Расходы</H3>
-				<List list={expenseCategories} />
+				<List list={expenseCategories} openForm={openForm} />
 			</div>
 		</div>
 	)

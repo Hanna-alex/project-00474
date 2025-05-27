@@ -1,7 +1,7 @@
-import { updateAccout } from '../api'
+import { editAccount } from '../api'
 
-export const updateAccountData = async (usserSession, id, data) => {
-	const updatedAccount = await updateAccout(id, data)
+export const updateAccount = async (usserSession, accountId, data) => {
+	const updatedAccount = await editAccount(accountId, data)
 
 	if (!updatedAccount) {
 		return {

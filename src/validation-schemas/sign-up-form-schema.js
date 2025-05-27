@@ -1,12 +1,12 @@
 import * as yup from 'yup'
-import { loginRegex } from '../utils'
+import { VALIDATION_PATTERNS } from '../constants'
 
 export const signUpFormSchema = yup.object().shape({
 	login: yup
 		.string()
 		.required('Заполните логин')
 		.matches(
-			loginRegex,
+			VALIDATION_PATTERNS.LOGIN,
 			'Неверно заполнен логин. Допускаются только буквы, цифры, тире и нежнее подчеркивание',
 		)
 		.min(3, 'Неверно заполнен логин. Минимум 3 символа')

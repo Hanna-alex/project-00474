@@ -1,7 +1,7 @@
 import { getDate } from '../utils'
 
-export const updateAccout = (id, data) =>
-	fetch(`http://localhost:3007/accounts/${id}`, {
+export const editCategory = (id, data) =>
+	fetch(`http://localhost:3007/categories/${id}`, {
 		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json',
@@ -9,4 +9,4 @@ export const updateAccout = (id, data) =>
 		body: JSON.stringify({ ...data, update_at: getDate() }),
 	})
 		.then((res) => res.json())
-		.then((updatedAccount) => updatedAccount)
+		.then((editedCategory) => editedCategory)

@@ -4,19 +4,21 @@
       "login": "Hanna-alex",
       "id": "1",
       "avatar": "https://undsgn.com/wp-content/uploads/2018/06/hulgjayakfo.jpg",
-      "email": "007@wz.777",
+      "email": "Hanna@alex.777",
       "password": "123!qQ123",
       "created_at": "19.03.2023 18:07:43",
       "updated_at": "18.04.2025 13:50:36",
       "icon": "019",
-      "update_at": "24.05.2025 11:37:57"
+      "update_at": "26.05.2025 15:32:49"
     },
     {
       "id": "c5e7",
       "login": "Мур-мур",
       "password": "aA1@1121211212",
-      "avatar": "",
-      "created_at": "16.05.2025 23:38:16"
+      "avatar": "https://amiel.club/uploads/posts/2022-03/1647628341_1-amiel-club-p-klassnie-kartinki-dlya-devochek-1.jpg",
+      "created_at": "16.05.2025 23:38:16",
+      "email": "mur@666.ru",
+      "update_at": "26.05.2025 18:56:31"
     },
     {
       "id": "48bc",
@@ -28,26 +30,6 @@
   ],
   "accounts": [
     {
-      "id": "1",
-      "user_id": 1,
-      "icon": "eur",
-      "name": "Евро2",
-      "amount": 500,
-      "currency": "RUB",
-      "created_at": "19.03.2023 18:07:43",
-      "update_at": "24.05.2025 15:05:22"
-    },
-    {
-      "id": "2",
-      "user_id": 1,
-      "icon": "university",
-      "name": "Текущий",
-      "amount": 2500.5,
-      "currency": "RUB",
-      "created_at": "19.03.2023 18:07:43",
-      "update_at": "24.05.2025 14:11:59"
-    },
-    {
       "id": "3",
       "user_id": 2,
       "icon": "university",
@@ -55,6 +37,50 @@
       "amount": -1500.75,
       "currency": "RUB",
       "created_at": "19.03.2023 18:07:43"
+    },
+    {
+      "id": "8c95",
+      "icon": "money",
+      "amount": 456,
+      "name": "456",
+      "user_id": "1",
+      "created_at": "24.05.2025 21:13:16",
+      "update_at": "25.05.2025 15:35:24"
+    },
+    {
+      "id": "91c8",
+      "icon": "envelope-open-o",
+      "amount": 789000,
+      "name": "qwerty",
+      "user_id": "1",
+      "created_at": "24.05.2025 21:23:04"
+    },
+    {
+      "id": "6683",
+      "icon": "bar-chart",
+      "amount": 5445,
+      "name": "инвестиции",
+      "user_id": "1",
+      "created_at": "24.05.2025 21:28:20",
+      "update_at": "24.05.2025 21:37:06"
+    },
+    {
+      "id": "02ca",
+      "icon": "diamond",
+      "amount": 10000,
+      "name": "ДрагМеталлы",
+      "user_id": "c5e7",
+      "created_at": "26.05.2025 16:33:59",
+      "update_at": "26.05.2025 18:56:05"
+    },
+    {
+      "id": "6610",
+      "icon": "university",
+      "amount": 50500,
+      "name": "Текущий",
+      "user_id": "c5e7",
+      "created_at": "26.05.2025 18:43:46",
+      "update_at": "26.05.2025 18:54:27"
     }
   ],
   "categories": [
@@ -749,5 +775,122 @@
         "name": "question-circle"
       }
     ]
-  }
+  },
+  "account_icons": [
+	 {
+        "id": "001",
+        "name": "university"
+      },
+	  {
+		 "id": "002",
+        "name": "building"
+
+	  },
+	 {
+        "id": "003",
+        "name": "money"
+      },
+      {
+        "id": "004",
+        "name": "credit-card"
+      },
+      {
+        "id": "005",
+        "name": "credit-card-alt"
+      },
+      {
+        "id": "006",
+        "name": "cc-mastercard"
+      },
+      {
+        "id": "007",
+        "name": "cc-visa"
+      },
+      {
+        "id": "008",
+        "name": "cc-jcb"
+      },
+      {
+        "id": "009",
+        "name": "rub"
+      },
+      {
+        "id": "010",
+        "name": "eur"
+      },
+      {
+        "id": "011",
+        "name": "usd"
+      },
+      {
+        "id": "012",
+        "name": "btc"
+      },
+      {
+        "id": "013",
+        "name": "briefcase"
+      },
+      {
+        "id": "014",
+        "name": "suitcase"
+      },
+      {
+        "id": "015",
+        "name": "diamond"
+      },
+
+      {
+        "id": "016",
+        "name": "line-chart"
+      },
+      {
+        "id": "017",
+        "name": "bar-chart"
+      },
+      {
+        "id": "018",
+        "name": "envelope"
+      },
+      {
+        "id": "019",
+        "name": "envelope-open-o"
+      },
+      {
+        "id": "020",
+        "name": "shirtsinbulk"
+      },
+      {
+        "id": "021",
+        "name": "percent"
+      },
+	  {
+		 "id": "022",
+        "name": "credit-card-alt"
+	  },
+	  {
+		 "id": "023",
+        "name": "money"
+	  },
+	  {
+		 "id": "024",
+        "name": "database"
+	  },
+	  {
+		 "id": "025",
+        "name": "pie-chart"
+	  },
+	  {
+		 "id": "026",
+        "name": "area-chart"
+	  },
+	  {
+		 "id": "027",
+        "name": "shield"
+	  },
+	  {
+		 "id": "028",
+        "name": "suitcase"
+	  }
+
+  ]
 }

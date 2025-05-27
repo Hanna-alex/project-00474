@@ -1,11 +1,20 @@
 import { Routes, Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Header, Footer } from './components'
-import { StartPage, SignInForm, SignUpForm, User, Accounts, Categories } from './pages'
+import {
+	StartPage,
+	SignInForm,
+	SignUpForm,
+	User,
+	Accounts,
+	Account,
+	Categories,
+} from './pages'
 import { selectUserSession } from './selectors'
-import styled from 'styled-components'
 import { Icons } from './components/icons/icons'
-import { AccountChangeForm } from './pages/accounts/components/change-form'
+
+import { CategoryForm } from './pages/categories/components/category-form'
+import styled from 'styled-components'
 
 export const App = () => {
 	const session = useSelector(selectUserSession)
@@ -28,10 +37,14 @@ export const App = () => {
 						<>
 							<Route path='/' element={<div>Главная страница</div>} />
 							<Route path='/accounts' element={<Accounts />}>
-								<Route path='change' element={<AccountChangeForm />}></Route>
+								<Route path='change' element={<Account />}></Route>
+								<Route path='add' element={<Account />}></Route>
 							</Route>
 							<Route path='/history' element={<div>История операций</div>} />
-							<Route path='/categories' element={<Categories />} />
+							<Route path='/categories' element={<Categories />}>
+								<Route path='change' element={<CategoryForm />}></Route>
+								<Route path='add' element={<CategoryForm />}></Route>
+							</Route>
 							<Route path='/user' element={<User />} />
 							<Route path='/icons' element={<Icons />} />
 							<Route

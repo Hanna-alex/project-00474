@@ -6,7 +6,6 @@ const initialCategoriesState = {
 }
 
 export const categoriesReducer = (state = initialCategoriesState, action) => {
-	//action.payload это объект с двумя массивами
 	switch (action.type) {
 		case ACTION_TYPE.SET_CATEGORIES:
 			const newState = { ...state }
@@ -27,6 +26,40 @@ export const categoriesReducer = (state = initialCategoriesState, action) => {
 			}
 
 			return newState
+
+		case ACTION_TYPE.CREATE_CATEGORY:
+			return {
+				income:
+					action.payload.type === 'income'
+						? [...state.income, action.payload]
+						: [...state.income],
+				expense:
+					action.payload.type === 'expense'
+						? [...state.expense, action.payload]
+						: [...state.expense],
+			}
+
+		case ACTION_TYPE.UPDATE_CATEGORY:
+			return {
+				income: state.income.map(
+					(obj) => (obj.id = action.payload.id ? { ...obj, ...action.payload } : obj),
+				),
+				expense: state.expense.map(
+					(obj) => (obj.id = action.payload.id ? { ...obj, ...action.payload } : obj),
+				),
+			}
+
+		case ACTION_TYPE.DELETE_CATEGORY:
+			return {
+				income:
+					action.payload.type === 'income'
+						? [...state.income.filter((obj) => obj.id !== action.payload.id)]
+						: [...state.income],
+				expense:
+					action.payload.type === 'expense'
+						? [...state.expense.filter((obj) => obj.id !== action.payload.id)]
+						: [...state.expense],
+			}
 
 		case ACTION_TYPE.RESET_CATEGORIES:
 			return initialCategoriesState

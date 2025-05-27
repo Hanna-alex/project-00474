@@ -1,7 +1,7 @@
-import { fetchUserCategories } from '../api'
+import { fetchCategories } from '../api'
 
-export const getUserCategories = async (userSession, userId) => {
-	const categories = await fetchUserCategories(userId)
+export const getCategories = async (userSession, userId) => {
+	const categories = await fetchCategories(userId)
 
 	if (!categories) {
 		return {

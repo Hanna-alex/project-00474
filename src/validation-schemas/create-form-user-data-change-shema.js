@@ -1,5 +1,5 @@
 import * as yup from 'yup'
-import { imageUrlRegex, emailRegex, loginRegex } from '../utils'
+import { VALIDATION_PATTERNS } from '../constants'
 
 export const createFormUserDataChangeShema = (currentUserLogin, requestServer) => {
 	return yup.object().shape({
@@ -7,7 +7,7 @@ export const createFormUserDataChangeShema = (currentUserLogin, requestServer) =
 			.string()
 			.trim()
 			.matches(
-				loginRegex,
+				VALIDATION_PATTERNS.LOGIN,
 				'Неверно заполнен логин. Допускаются только буквы, цифры, тире и нежнее подчеркивание',
 			)
 			.min(3, 'Неверно заполнен логин. Минимум 3 символа')
@@ -22,7 +22,7 @@ export const createFormUserDataChangeShema = (currentUserLogin, requestServer) =
 			.trim()
 			.test('is-valid-email', 'Не верный формат почты', (value) => {
 				if (!value) return true
-				return emailRegex.test(value)
+				return VALIDATION_PATTERNS.EMAIL.test(value)
 			}),
 		avatar: yup
 			.string()
@@ -32,7 +32,7 @@ export const createFormUserDataChangeShema = (currentUserLogin, requestServer) =
 				'Ссылка на аватар должно заканчиватся на .jpeg, .jpg, .png, .webp или .svg',
 				(value) => {
 					if (!value) return true
-					return imageUrlRegex.test(value)
+					return VALIDATION_PATTERNS.IMAGE.test(value)
 				},
 			),
 	})

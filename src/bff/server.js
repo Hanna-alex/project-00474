@@ -8,11 +8,12 @@ import {
 	getCategories,
 	getAccountIcons,
 	updateAccount,
-	deleteAccountData,
+	deleteAccount,
 	createAccount,
 	updateCategory,
-	deleteCategoryData,
+	deleteCategory,
 	createCategory,
+	getIcons,
 } from './operations'
 
 export const server = {
@@ -25,9 +26,10 @@ export const server = {
 	getCategories,
 	getAccountIcons,
 	updateAccount,
-	deleteAccountData,
+	deleteAccount,
 	createAccount,
 	updateCategory,
-	deleteCategoryData,
+	deleteCategory,
 	createCategory,
+	getIcons,
 }

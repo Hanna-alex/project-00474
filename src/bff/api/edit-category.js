@@ -1,7 +1,7 @@
 import { getDate } from '../utils'
 
-export const editCategory = (id, data) =>
-	fetch(`http://localhost:3007/categories/${id}`, {
+export const editCategory = (caterogyId, data) =>
+	fetch(`http://localhost:3007/categories/${caterogyId}`, {
 		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json',

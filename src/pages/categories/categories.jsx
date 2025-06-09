@@ -1,12 +1,11 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import { H3, List } from '../../components'
 import { useServerRequest } from '../../hooks'
 import { selectUserId } from '../../selectors'
-import { loadCategoriesAsync } from '../../actions'
+import { ACTION_TYPE, loadCategoriesAsync } from '../../actions'
 import { selectIncomeCategories, selectExpenseCategories } from '../../selectors'
-import { ACTION_TYPE } from '../../actions'
 import styled from 'styled-components'
 
 const CategoriesContainer = ({ className }) => {
@@ -25,26 +24,28 @@ const CategoriesContainer = ({ className }) => {
 
 	const navigate = useNavigate()
 
-	const openForm = (selectAccount = null) => {
-		if (!selectAccount) navigate('add')
-		else navigate('change', { state: { account: selectAccount } })
+	const openForm = (selectCategory = null, typeAdd = '') => {
+		if (!selectCategory) navigate('addCategory', { state: { type: typeAdd } })
+		else navigate('changeCategory', { state: { category: selectCategory } })
 	}
 
 	return (
 		<div className={className}>
+			<Outlet />
 			<div className='wrapper'>
 				<H3>Доходы</H3>
-				<List list={incomeCategories} openForm={openForm} />
+				<List list={incomeCategories} openForm={openForm} typeAdd='income' />
 			</div>
 			<div className='wrapper'>
 				<H3>Расходы</H3>
-				<List list={expenseCategories} openForm={openForm} />
+				<List list={expenseCategories} openForm={openForm} typeAdd='expense' />
 			</div>
 		</div>
 	)
 }
 
 export const Categories = styled(CategoriesContainer)`
+	position: relative;
 	display: flex;
 	justify-content: space-between;
 	flex: 1;

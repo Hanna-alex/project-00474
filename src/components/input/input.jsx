@@ -1,5 +1,5 @@
-import styled from 'styled-components'
 import { forwardRef } from 'react'
+import styled from 'styled-components'
 
 const InputContainer = forwardRef(({ className, marginBottom, ...props }, ref) => (
 	<input className={className} {...props} ref={ref} />
@@ -16,9 +16,16 @@ export const Input = styled(InputContainer)`
 	padding: 13px 20px;
 	margin-bottom: ${({ marginBottom }) => marginBottom || '24px'};
 
-	-webkit-appearance: none; /* Chrome, Safari, Edge */
-	-moz-appearance: none; /* Firefox */
-	appearance: none;
+	&[type='number'] {
+		-webkit-appearance: none; /* Chrome, Safari, Edge */
+		-moz-appearance: none; /* Firefox */
+		appearance: none;
+		&::-webkit-inner-spin-button,
+		&::-webkit-calendar-picker-indicator {
+			display: none;
+			-webkit-appearance: none; /* Chrome/Safari */
+		}
+	}
 
 	&:hover {
 		box-shadow: 0px 4px 4px var(--shadow);
@@ -26,10 +33,5 @@ export const Input = styled(InputContainer)`
 
 	&:focus {
 		box-shadow: 1px 2px 4px var(--blue) inset;
-	}
-	&::-webkit-inner-spin-button,
-	&::-webkit-calendar-picker-indicator {
-		display: none;
-		-webkit-appearance: none; /* Chrome/Safari */
 	}
 `

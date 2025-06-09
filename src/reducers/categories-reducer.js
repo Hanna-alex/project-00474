@@ -27,7 +27,7 @@ export const categoriesReducer = (state = initialCategoriesState, action) => {
 
 			return newState
 
-		case ACTION_TYPE.CREATE_CATEGORY:
+		case ACTION_TYPE.SET_CATEGORY:
 			return {
 				income:
 					action.payload.type === 'income'
@@ -41,11 +41,11 @@ export const categoriesReducer = (state = initialCategoriesState, action) => {
 
 		case ACTION_TYPE.UPDATE_CATEGORY:
 			return {
-				income: state.income.map(
-					(obj) => (obj.id = action.payload.id ? { ...obj, ...action.payload } : obj),
+				income: state.income.map((obj) =>
+					obj.id === action.payload.id ? { ...obj, ...action.payload } : obj,
 				),
-				expense: state.expense.map(
-					(obj) => (obj.id = action.payload.id ? { ...obj, ...action.payload } : obj),
+				expense: state.expense.map((obj) =>
+					obj.id === action.payload.id ? { ...obj, ...action.payload } : obj,
 				),
 			}
 

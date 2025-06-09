@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Header, Footer } from './components'
 import {
 	StartPage,
@@ -9,14 +9,25 @@ import {
 	Accounts,
 	Account,
 	Categories,
+	Category,
 } from './pages'
 import { selectUserSession } from './selectors'
-import { Icons } from './components/icons/icons'
 
-import { CategoryForm } from './pages/categories/components/category-form'
 import styled from 'styled-components'
+import { useLayoutEffect } from 'react'
+import { setUser } from './actions'
 
 export const App = () => {
+	const dispatch = useDispatch()
+
+	useLayoutEffect(() => {
+		const currentUserSessionJson = sessionStorage.getItem('userSession')
+		if (!currentUserSessionJson) return
+
+		const currentUserSession = JSON.parse(currentUserSessionJson)
+		dispatch(setUser(currentUserSession))
+	}, [dispatch])
+
 	const session = useSelector(selectUserSession)
 	const isSession = !!session
 
@@ -42,11 +53,10 @@ export const App = () => {
 							</Route>
 							<Route path='/history' element={<div>История операций</div>} />
 							<Route path='/categories' element={<Categories />}>
-								<Route path='change' element={<CategoryForm />}></Route>
-								<Route path='add' element={<CategoryForm />}></Route>
+								<Route path=':action' element={<Category />} />
 							</Route>
 							<Route path='/user' element={<User />} />
-							<Route path='/icons' element={<Icons />} />
+
 							<Route
 								path='*'
 								element={<div>Ошибки зарегистрированных пользователей</div>}

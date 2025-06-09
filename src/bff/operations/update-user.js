@@ -1,7 +1,14 @@
 import { editUser } from '../api'
+import { sessions } from '../sessions'
 
-export const updateUser = async (usserSession, id, data) => {
-	const updatedUserData = await editUser(id, data)
+export const updateUser = async (userSession, userId, data) => {
+	const isExists = await sessions.access(userSession)
+
+	if (!isExists) {
+		sessions.remove(userSession)
+	}
+
+	const updatedUserData = await editUser(userId, data)
 
 	if (!updatedUserData) {
 		return {

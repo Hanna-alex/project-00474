@@ -1,6 +1,13 @@
 import { fetchCategories } from '../api'
+import { sessions } from '../sessions'
 
 export const getCategories = async (userSession, userId) => {
+	const isExists = await sessions.access(userSession)
+
+	if (!isExists) {
+		sessions.remove(userSession)
+	}
+
 	const categories = await fetchCategories(userId)
 
 	if (!categories) {

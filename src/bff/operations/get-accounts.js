@@ -1,6 +1,13 @@
 import { fetchAccounts } from '../api'
+import { sessions } from '../sessions'
 
 export const getAccounts = async (userSession, userId) => {
+	const isExists = await sessions.access(userSession)
+
+	if (!isExists) {
+		sessions.remove(userSession)
+	}
+
 	const accounts = await fetchAccounts(userId)
 
 	if (!accounts) {

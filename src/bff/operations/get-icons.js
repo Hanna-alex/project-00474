@@ -1,16 +1,16 @@
-import { fetchAccountIcons } from '../api'
+import { fetchIcons } from '../api'
 import { sessions } from '../sessions'
 
-export const getAccountIcons = async (userSession) => {
+export const getIcons = async (userSession) => {
 	const isExists = await sessions.access(userSession)
 
 	if (!isExists) {
 		sessions.remove(userSession)
 	}
 
-	const accountIcons = await fetchAccountIcons()
+	const icons = await fetchIcons()
 
-	if (!accountIcons) {
+	if (!icons) {
 		return {
 			error: 'Не удалось загрузить иконки',
 			res: null,
@@ -19,6 +19,6 @@ export const getAccountIcons = async (userSession) => {
 
 	return {
 		error: null,
-		res: accountIcons,
+		res: icons,
 	}
 }

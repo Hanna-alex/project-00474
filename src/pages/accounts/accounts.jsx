@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Outlet, useNavigate } from 'react-router-dom'
-import { Button, H2, Icon } from '../../components'
+import { H2, Icon } from '../../components'
 import { useServerRequest } from '../../hooks'
 import { selectUserId, selectUserAccounts } from '../../selectors'
 import { ACTION_TYPE, loadAccountsAsync } from '../../actions'
@@ -44,18 +44,9 @@ const AccountsContainer = ({ className }) => {
 						</span>
 					</li>
 				))}
-				<li className='item' onClick={() => openForm()}>
-					<Button
-						width='50px'
-						height='50px'
-						background='var(--beige)'
-						borderRadius='50%'
-						padding='0'
-						marginRight='12px'
-					>
-						<Icon iconName='plus' size='26px' />
-					</Button>
-					<span className='icon-name'>Добавить</span>
+				<li className='bnt' onClick={() => openForm()}>
+					<Icon iconName='plus' size='22px' color='var(--beige)' />
+					<span>Добавить</span>
 				</li>
 			</ul>
 		</div>
@@ -75,6 +66,7 @@ export const Accounts = styled(AccountsContainer)`
 		grid-template-columns: repeat(3, 1fr);
 		gap: 20px;
 		width: 100%;
+		align-self: end;
 	}
 
 	& .item {
@@ -86,10 +78,9 @@ export const Accounts = styled(AccountsContainer)`
 		padding: 10px 20px;
 		cursor: pointer;
 		transition: all 0.3s ease-in-out;
-	}
-
-	& .item:hover {
-		box-shadow: 1px 4px 4px var(--shadow);
+		&:hover {
+			box-shadow: 1px 4px 4px var(--shadow);
+		}
 	}
 
 	& .icon {
@@ -102,10 +93,29 @@ export const Accounts = styled(AccountsContainer)`
 		background: var(--beige);
 		margin-right: 12px;
 	}
+
 	& .num {
 		margin-left: auto;
 	}
-	& .icon-name {
-		margin-left: 16px;
+
+	& .bnt {
+		align-self: center;
+		display: flex;
+		align-items: center;
+		width: 160px;
+		height: 50px;
+		border-radius: 8px;
+		background: var(--blue);
+		color: var(--beige);
+		padding: 10px 20px;
+		cursor: pointer;
+		transition: all 0.3s ease-in-out;
+
+		&:hover {
+			box-shadow: 1px 4px 4px var(--shadow);
+		}
+		& span {
+			margin-left: 18px;
+		}
 	}
 `

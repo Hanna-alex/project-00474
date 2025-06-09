@@ -1,7 +1,14 @@
 import { editCategory } from '../api'
+import { sessions } from '../sessions'
 
-export const updateCategory = async (usserSession, id, data) => {
-	const updatedCategory = await editCategory(id, data)
+export const updateCategory = async (userSession, caterogyId, data) => {
+	const isExists = await sessions.access(userSession)
+
+	if (!isExists) {
+		sessions.remove(userSession)
+	}
+
+	const updatedCategory = await editCategory(caterogyId, data)
 
 	if (!updatedCategory) {
 		return {
@@ -11,6 +18,6 @@ export const updateCategory = async (usserSession, id, data) => {
 	}
 	return {
 		error: null,
-		res: updatedCategory, //объект
+		res: updatedCategory,
 	}
 }

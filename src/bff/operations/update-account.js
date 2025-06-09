@@ -1,6 +1,12 @@
 import { editAccount } from '../api'
+import { sessions } from '../sessions'
 
-export const updateAccount = async (usserSession, accountId, data) => {
+export const updateAccount = async (userSession, accountId, data) => {
+	const isExists = await sessions.access(userSession)
+
+	if (!isExists) {
+		sessions.remove(userSession)
+	}
 	const updatedAccount = await editAccount(accountId, data)
 
 	if (!updatedAccount) {

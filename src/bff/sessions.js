@@ -1,18 +1,25 @@
+import { fetchSession, removeSession, addSession } from './api'
+
 export const sessions = {
-	list: {},
 	create(user) {
 		const hash = Math.random().toFixed(50)
 
-		this.list[hash] = user
+		addSession(hash, user)
 
 		return hash
 	},
 
-	remove(hash) {
-		delete this.list[hash]
+	async remove(hash) {
+		const session = await fetchSession(hash)
+
+		if (!session) return
+
+		removeSession(session.id)
 	},
 
-	access(hash) {
-		return this.list.hasOwnProperty(hash) // не работает без сервера или хранение list в json файле
+	async access(hash) {
+		const session = await fetchSession(hash)
+
+		return !!session
 	},
 }

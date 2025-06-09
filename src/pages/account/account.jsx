@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { H3, Button, Input, Icon, ErrorMessage, Scrollbar } from '../../components'
+import { H3, Button, Input, Icon, ErrorMessage, RadioInput } from '../../components'
 import { accountFormChangeSchem } from '../../validation-schemas'
 import {
 	loadAccountsAsync,
@@ -16,7 +16,7 @@ import { getModifiedData, hasChanges } from '../../utils'
 import { selectUserId } from '../../selectors'
 import styled from 'styled-components'
 
-const AccountContainer = ({ className, account: initialAccount = null }) => {
+const AccountContainer = ({ className }) => {
 	const location = useLocation()
 	const account = location.state?.account || null
 	const userId = useSelector(selectUserId)
@@ -62,14 +62,14 @@ const AccountContainer = ({ className, account: initialAccount = null }) => {
 			reloadAccount()
 			navigate('/accounts')
 		} else {
-			dispatch(createAccountAsync(serverRequest, data, userId, setServerError)) //TODO передать сетер
+			dispatch(createAccountAsync(serverRequest, data, userId, setServerError))
 			reloadAccount()
 			navigate('/accounts')
 		}
 	}
 
 	const removeAccount = (account) => {
-		serverRequest('deleteAccountData', account.id).then(({ error, res }) => {
+		serverRequest('deleteAccount', account.id).then(({ error, res }) => {
 			if (!res) {
 				setServerError(error)
 				return
@@ -83,100 +83,97 @@ const AccountContainer = ({ className, account: initialAccount = null }) => {
 	return (
 		<div className={className}>
 			<form className='form' onSubmit={handleSubmit(onSubmit)}>
-				<Scrollbar width='540px' height='480px'>
+				<Button
+					type='button'
+					width='30px'
+					height='30px'
+					padding='6px 2px'
+					background='transparent'
+					hoverStyles={{
+						'text-shadow': `4px -2px 2px var(--shadow)`,
+					}}
+					onClick={() => navigate(-1)}
+				>
+					<Icon iconName='arrow-left' size='22px' />
+				</Button>
+				<H3 textAlign={'center'}>
+					{isEditModeAccount ? (
+						<>
+							<span>Изменить счет: </span>
+							<br />
+							<span>{account.name}</span>
+						</>
+					) : (
+						'Создать счет'
+					)}
+				</H3>
+				<div className='form-group'>
+					<label className='label' htmlFor='name'>
+						Имя счета
+					</label>
+					<Input
+						type='text'
+						id='name'
+						{...register('name', { onChange: () => setError(null) })}
+					/>
+				</div>
+				<div className='form-group'>
+					<label className='label' htmlFor='amount'>
+						Сумма счета
+					</label>
+					<Input
+						type='text'
+						id='amount'
+						{...register('amount', { onChange: () => setError(null) })}
+					/>
+				</div>
+				<div>
+					<label className='label'>Иконки</label>
+					<div className='checkbox-group'>
+						{icons.map((icon) => (
+							<div className='checkbox-box' key={icon.id}>
+								<RadioInput
+									styleType='icon'
+									key={icon.id}
+									id={icon.id}
+									value={icon.name}
+									iconName={icon.name}
+									htmlFor={icon.id}
+									defaultChecked={isEditModeAccount ? icon.name === account.icon : null}
+									{...register('icon', { onChange: () => setError(null) })}
+								/>
+							</div>
+						))}
+					</div>
+				</div>
+
+				<Button
+					type='submit'
+					disabled={isEditModeAccount ? !hasChanges(formValues, account) : false}
+					margin='0 0 24px 0'
+					hoverStyles={{
+						'box-shadow': '1px -4px 4px var(--shadow)',
+					}}
+				>
+					Сохранить
+				</Button>
+
+				{isEditModeAccount && (
 					<Button
 						type='button'
-						width='30px'
-						height='30px'
-						padding='6px 2px'
-						background='transparent'
+						fontSize='16px'
+						width='160px'
+						color='var(--brown)'
+						background='var(--green)'
 						hoverStyles={{
-							'text-shadow': `4px -2px 2px var(--shadow)`,
+							'box-shadow': '1px 2px 4px var(--shadow)',
+							color: 'var(--pink)',
 						}}
-						onClick={() => navigate(-1)}
+						onClick={() => removeAccount(account)}
 					>
-						<Icon iconName='arrow-left' size='22px' />
+						Удалить
 					</Button>
-					<H3 textAlign={'center'}>
-						{isEditModeAccount ? (
-							<>
-								<span>Изменить счет: </span>
-								<br />
-								<span>{account.name}</span>
-							</>
-						) : (
-							'Создать счет'
-						)}
-					</H3>
-					<div className='form-group'>
-						<label className='label' htmlFor='name'>
-							Имя счета
-						</label>
-						<Input
-							type='text'
-							id='name'
-							{...register('name', { onChange: () => setError(null) })}
-						/>
-					</div>
-					<div className='form-group'>
-						<label className='label' htmlFor='amount'>
-							Сумма счета
-						</label>
-						<Input
-							type='number'
-							id='amount'
-							{...register('amount', { onChange: () => setError(null) })}
-						/>
-					</div>
-					<div>
-						<label className='label'>Иконки</label>
-						<div className='checkbox-group'>
-							{icons.map((icon) => (
-								<div className='checkbox-box' key={icon.id}>
-									<Input
-										type='radio'
-										id={icon.id}
-										marginBottom='0'
-										value={icon.name}
-										defaultChecked={isEditModeAccount ? icon.name === account.icon : null}
-										{...register('icon', { onChange: () => setError(null) })}
-									/>
-									<label className='checkbox-label' htmlFor={icon.id}>
-										<Icon iconName={icon.name} size='28px' />
-									</label>
-								</div>
-							))}
-						</div>
-					</div>
-					<Button
-						type='submit'
-						disabled={isEditModeAccount ? !hasChanges(formValues, account) : false}
-						marginBottom='24px'
-						hoverStyles={{
-							'box-shadow': '1px -4px 4px var(--shadow)',
-						}}
-					>
-						Сохранить
-					</Button>
-
-					{isEditModeAccount && (
-						<Button
-							type='button'
-							fontSize='16px'
-							width='160px'
-							color='var(--brown)'
-							background='var(--green)'
-							marginBottom='4px'
-							hoverStyles={{
-								'box-shadow': '1px 2px 4px var(--shadow)',
-								color: 'var(--pink)',
-							}}
-							onClick={() => removeAccount(account)}
-						>
-							Удалить
-						</Button>
-					)}
-				</Scrollbar>
+				)}
 
 				{errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
 			</form>
@@ -198,6 +195,7 @@ export const Account = styled(AccountContainer)`
 	& .form {
 		position: relative;
 		width: 620px;
+		height: 720px;
 		background: var(--green);
 		border-radius: 8px;
 		padding: 35px 40px;
@@ -228,19 +226,5 @@ export const Account = styled(AccountContainer)`
 		display: flex;
 		flex-wrap: wrap;
 		margin-bottom: 24px;
-
-		& input[type='radio'] {
-			display: none;
-		}
-
-		& input[type='radio']:checked + label {
-			background-color: var(--blue);
-		}
-		& label:hover {
-			box-shadow: 1px 4px 4px var(--shadow);
-		}
-		& .checkbox-box {
-			margin: 5px;
-		}
 	}
 `

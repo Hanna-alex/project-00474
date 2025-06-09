@@ -13,6 +13,6 @@ export * from './delete-account'
 export * from './load-categories-async'
 export * from './set-categories'
 
-export * from './create-category'
+export * from './create-category-async'
 export * from './update-category-async'
 export * from './delete-category'

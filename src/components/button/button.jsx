@@ -38,8 +38,7 @@ export const Button = styled(ButtonContainer)`
 	transition: all 0.3s ease;
 	box-sizing: border-box;
 	padding: ${({ padding }) => padding || '15px 30px'};
-	margin-right: ${({ marginRight }) => marginRight || '0'};
-	margin-bottom: ${({ marginBottom }) => marginBottom || '0'};
+	margin: ${({ margin }) => margin || '0'};
 
 	&:hover {
 		${({ hoverStyles }) =>

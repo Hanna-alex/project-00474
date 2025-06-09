@@ -35,6 +35,7 @@ const SignUpFormContainer = ({ className }) => {
 				setServerError(`Ошибка запроса: ${error}`)
 			} else {
 				dispatch(setUser(res))
+				sessionStorage.setItem('userSession', JSON.stringify(res))
 				navigate('/')
 			}
 		})

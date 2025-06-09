@@ -6,9 +6,9 @@ const MenuContainer = ({ className }) => (
 	<header className={className}>
 		<ul className={className}>
 			{APP_NAVIGATE.map((elemNav) => (
-				<Li key={elemNav.id}>
+				<li key={elemNav.id}>
 					<Link to={elemNav.path}>{elemNav.page}</Link>
-				</Li>
+				</li>
 			))}
 		</ul>
 	</header>
@@ -18,11 +18,10 @@ export const Menu = styled(MenuContainer)`
 	display: flex;
 	justify-content: space-between;
 	// width: 320px;
-`
-
-const Li = styled.li`
-	list-style: none;
-	padding-right: 8px;
+	& li {
+		list-style: none;
+		padding-right: 8px;
+	}
 `
 
 const Link = styled(NavLink)`

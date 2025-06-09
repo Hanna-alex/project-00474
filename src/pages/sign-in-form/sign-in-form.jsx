@@ -36,6 +36,7 @@ const SignInFormContainer = ({ className }) => {
 				return
 			}
 			dispatch(setUser(res))
+			sessionStorage.setItem('userSession', JSON.stringify(res))
 			navigate('/')
 		})
 	}

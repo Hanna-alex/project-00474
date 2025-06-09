@@ -37,9 +37,9 @@ ul {
 
 .test {
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	overflow-y: scroll;
-	box-sizing: border-box;
-	text-align: left;
+	align-items: flex-end;
+	margin-left: 24px;
+	margin-bottom: 0;
+	border-bottom: 1px solid var(--beige);
+	border-top: 1px solid var(--beige);
 }

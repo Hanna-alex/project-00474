@@ -60,7 +60,7 @@ const FormUserDataChangeContainer = ({ className, ...props }) => {
 				setServerError(error)
 				return
 			}
-			sessionStorage.setItem('userSession', JSON.stringify(res))
+			localStorage.setItem('userSession', JSON.stringify(res))
 			dispatch(updateUser(res))
 
 			closeFormChange()

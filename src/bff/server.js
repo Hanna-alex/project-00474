@@ -14,6 +14,7 @@ import {
 	deleteCategory,
 	createCategory,
 	getIcons,
+	getIncomeOperation,
 } from './operations'
 
 export const server = {
@@ -32,4 +33,5 @@ export const server = {
 	deleteCategory,
 	createCategory,
 	getIcons,
+	getIncomeOperation,
 }

@@ -27,7 +27,7 @@ const UserContainer = ({ className }) => {
 
 	const handleClick = () => {
 		dispatch(logout(session))
-		sessionStorage.removeItem('userSession')
+		localStorage.removeItem('userSession')
 		navigate('/')
 	}
 

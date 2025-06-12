@@ -36,7 +36,7 @@ const SignInFormContainer = ({ className }) => {
 				return
 			}
 			dispatch(setUser(res))
-			sessionStorage.setItem('userSession', JSON.stringify(res))
+			localStorage.setItem('userSession', JSON.stringify(res))
 			navigate('/')
 		})
 	}
@@ -55,7 +55,7 @@ const SignInFormContainer = ({ className }) => {
 					{...register('login', { onChange: () => setServerError(null) })}
 				/>
 				<Input
-					type='text'
+					type='password'
 					placeholder='Пароль'
 					{...register('password', { onChange: () => setServerError(null) })}
 				/>

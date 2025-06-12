@@ -1,5 +1,6 @@
 import { Button } from '../button/button'
 import { Icon } from '../icon/icon'
+import { truncateWord } from '../../utils'
 import styled from 'styled-components'
 
 const ListContainer = ({ className, list, openForm, typeAdd }) => {
@@ -10,7 +11,7 @@ const ListContainer = ({ className, list, openForm, typeAdd }) => {
 					<div className='icon-wrapper'>
 						<Icon iconName={item.icon} size='30px' />
 					</div>
-					<span className='icon-name'>{item.name}</span>
+					<span className='icon-name'> {truncateWord(item.name, 12)}</span>
 				</li>
 			))}
 			<li className='item' onClick={() => openForm('', typeAdd)}>
@@ -21,7 +22,7 @@ const ListContainer = ({ className, list, openForm, typeAdd }) => {
 					background='var(--blue)'
 					padding='8px'
 					margin='0 0 8px 0'
-					size='24x'
+					fontSize='24x'
 					hoverStyles={{ 'box-shadow': ` 1px 4px 4px var(--shadow)` }}
 				>
 					<Icon iconName='plus' size='26px' color='var(--beige)' />
@@ -43,8 +44,9 @@ export const List = styled(ListContainer)`
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		width: 100px;
 		cursor: pointer;
-		padding: 12px;
+		padding: 8px;
 		transition: all 0.3s ease-in-out;
 
 		&:hover .icon-wrapper {

@@ -122,20 +122,20 @@ const CategoryContainer = ({ className }) => {
 				<div className='radio-circle-wrapper'>
 					<RadioInput
 						styleType='circle'
-						id='income'
-						value='income'
-						htmlFor='income'
-						labelName='ДОХОДЫ'
-						defaultChecked={category?.type === 'income' || typeAdd === 'income'}
-						{...register('type', { onChange: () => setError(null) })}
-					/>
-					<RadioInput
-						styleType='circle'
 						id='expense'
 						value='expense'
 						htmlFor='expense'
 						labelName='РАСХОДЫ'
 						defaultChecked={category?.type === 'expense' || typeAdd === 'expense'}
+						{...register('type', { onChange: () => setError(null) })}
+					/>
+					<RadioInput
+						styleType='circle'
+						id='income'
+						value='income'
+						htmlFor='income'
+						labelName='ДОХОДЫ'
+						defaultChecked={category?.type === 'income' || typeAdd === 'income'}
 						{...register('type', { onChange: () => setError(null) })}
 					/>
 				</div>

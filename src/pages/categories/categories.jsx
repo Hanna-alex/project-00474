@@ -3,9 +3,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { H3, List } from '../../components'
 import { useServerRequest } from '../../hooks'
-import { selectUserId } from '../../selectors'
+import {
+	selectUserId,
+	selectIncomeCategories,
+	selectExpenseCategories,
+} from '../../selectors'
 import { ACTION_TYPE, loadCategoriesAsync } from '../../actions'
-import { selectIncomeCategories, selectExpenseCategories } from '../../selectors'
 import styled from 'styled-components'
 
 const CategoriesContainer = ({ className }) => {
@@ -33,12 +36,12 @@ const CategoriesContainer = ({ className }) => {
 		<div className={className}>
 			<Outlet />
 			<div className='wrapper'>
-				<H3>Доходы</H3>
-				<List list={incomeCategories} openForm={openForm} typeAdd='income' />
-			</div>
-			<div className='wrapper'>
 				<H3>Расходы</H3>
 				<List list={expenseCategories} openForm={openForm} typeAdd='expense' />
+			</div>
+			<div className='wrapper'>
+				<H3>Доходы</H3>
+				<List list={incomeCategories} openForm={openForm} typeAdd='income' />
 			</div>
 		</div>
 	)
@@ -53,7 +56,7 @@ export const Categories = styled(CategoriesContainer)`
 	padding: 40px 0;
 
 	& .wrapper {
-		width: 480px;
+		width: 460px;
 		height: auto;
 		background: var(--green);
 		border-radius: 8px;

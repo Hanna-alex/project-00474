@@ -35,7 +35,7 @@ const SignUpFormContainer = ({ className }) => {
 				setServerError(`Ошибка запроса: ${error}`)
 			} else {
 				dispatch(setUser(res))
-				sessionStorage.setItem('userSession', JSON.stringify(res))
+				localStorage.setItem('userSession', JSON.stringify(res))
 				navigate('/')
 			}
 		})
@@ -58,12 +58,12 @@ const SignUpFormContainer = ({ className }) => {
 					{...register('login', { onChange: () => setServerError(null) })}
 				/>
 				<Input
-					type='text'
+					type='password'
 					placeholder='Пароль'
 					{...register('password', { onChange: () => setServerError(null) })}
 				/>
 				<Input
-					type='text'
+					type='password'
 					placeholder='Повторите пароль'
 					{...register('confirmPassword', { onChange: () => setServerError(null) })}
 				/>

@@ -40,6 +40,31 @@ export const categoriesReducer = (state = initialCategoriesState, action) => {
 			}
 
 		case ACTION_TYPE.UPDATE_CATEGORY:
+			const { id, type } = action.payload
+
+			const categoryInIncome = state.income.find((cat) => cat.id === id)
+			const categoryInExpense = state.expense.find((cat) => cat.id === id)
+
+			if (categoryInIncome && categoryInIncome.type !== type) {
+				const newIncome = state.income.filter((cat) => cat.id !== id)
+
+				const updatedCategory = { ...categoryInIncome, ...action.payload }
+				return {
+					income: newIncome,
+					expense: [...state.expense, updatedCategory],
+				}
+			}
+
+			if (categoryInExpense && categoryInExpense.type !== type) {
+				const newExpense = state.expense.filter((cat) => cat.id !== id)
+
+				const updatedCategory = { ...categoryInExpense, ...action.payload }
+				return {
+					income: [...state.income, updatedCategory],
+					expense: newExpense,
+				}
+			}
+
 			return {
 				income: state.income.map((obj) =>
 					obj.id === action.payload.id ? { ...obj, ...action.payload } : obj,

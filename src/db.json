@@ -4,12 +4,11 @@
       "login": "Hanna-alex",
       "id": "1",
       "avatar": "https://undsgn.com/wp-content/uploads/2018/06/hulgjayakfo.jpg",
-      "email": "Hanna@alex.777",
+      "email": "Hanna@alex.999",
       "password": "123!qQ123",
       "created_at": "19.03.2023 18:07:43",
-      "updated_at": "18.04.2025 13:50:36",
       "icon": "019",
-      "update_at": "26.05.2025 15:32:49"
+      "update_at": "10.06.2025 17:44:21"
     },
     {
       "id": "c5e7",
@@ -19,22 +18,9 @@
       "created_at": "16.05.2025 23:38:16",
       "email": "mur@666.ru",
       "update_at": "26.05.2025 18:56:31"
-    },
-    {
-      "id": "48bc",
-      "login": "455",
-      "password": "456Qa!78",
-      "avatar": "",
-      "created_at": "17.05.2025 00:39:13"
-    },
-    {
-      "id": "3ea0",
-      "login": "111",
-      "password": "45!qQqwq",
-      "avatar": "",
-      "created_at": "06.06.2025 13:15:56"
     }
   ],
+
   "accounts": [
     {
       "id": "3",
@@ -92,40 +78,34 @@
     {
       "id": "2bc9",
       "name": "бетховены",
-      "amount": "10000",
+      "amount": "10000,23",
       "icon": "btc",
       "user_id": "1",
-      "created_at": "05.06.2025 18:47:13"
-    },
-    {
-      "id": "6e75",
-      "icon": "rub",
-      "amount": "0",
-      "name": "руб",
-      "user_id": "1",
-      "created_at": "09.06.2025 21:59:43"
+      "created_at": "05.06.2025 18:47:13",
+      "update_at": "10.06.2025 17:44:36"
     }
   ],
+
   "categories": [
     {
       "id": "d001",
       "user_id": 1,
       "type": "income",
       "name": "Зарплата",
-      "icon": "usd",
+      "icon": "cc-visa",
       "color": "c7c9c10",
       "created_at": "19.03.2023 18:07:43",
-      "update_at": "09.06.2025 22:06:42"
+      "update_at": "10.06.2025 10:33:41"
     },
     {
       "id": "d002",
       "user_id": 1,
       "type": "income",
       "name": "Банк",
-      "icon": "graduation-cap",
+      "icon": "university",
       "color": "c7c9c10",
       "created_at": "19.03.2023 18:07:43",
-      "update_at": "09.06.2025 21:44:04"
+      "update_at": "10.06.2025 17:04:59"
     },
     {
       "id": "d003",
@@ -143,11 +123,11 @@
       "user_id": 1,
       "type": "expense",
       "name": "Дом",
-      "icon": "umbrella",
+      "icon": "home",
       "color": "c7c9c10",
       "created_at": "19.03.2023 18:07:43",
       "updated_at": "",
-      "update_at": "05.06.2025 17:40:36"
+      "update_at": "10.06.2025 18:12:39"
     },
     {
       "id": "d005",
@@ -204,10 +184,11 @@
       "id": "d0011",
       "type": "income",
       "name": "Зарплата",
-      "icon": "cc-mastercard",
+      "icon": "usd",
       "color": "c7c9c10",
       "user_id": "c5e7",
-      "created_at": "16.05.2025 23:38:16"
+      "created_at": "16.05.2025 23:38:16",
+      "update_at": "10.06.2025 10:31:42"
     },
     {
       "id": "d0012",
@@ -369,16 +350,7 @@
       "icon": "pencil",
       "user_id": "1",
       "created_at": "29.05.2025 18:49:00",
-      "update_at": "02.06.2025 18:01:58"
-    },
-    {
-      "id": "c7b2",
-      "name": "Здоровье",
-      "type": "income",
-      "icon": "medkit",
-      "user_id": "1",
-      "created_at": "29.05.2025 19:13:32",
-      "update_at": "05.06.2025 18:50:38"
+      "update_at": "10.06.2025 17:42:11"
     },
     {
       "id": "d001",
@@ -460,37 +432,53 @@
       "color": "c7c9c10",
       "user_id": "3ea0",
       "created_at": "06.06.2025 13:15:56"
+    },
+    {
+      "id": "d6f6",
+      "name": "путешествия",
+      "type": "expense",
+      "icon": "plane",
+      "user_id": "1",
+      "created_at": "10.06.2025 17:48:04"
     }
   ],
-  "transactions": [
-    {
+
+  "income_transactions":[
+	 {
       "id": "1",
       "user_id": 1,
       "account_id": 1,
       "category_id": 1,
       "amount": 5000,
-      "date": "2023-03-01",
-      "description": "Зарплата за февраль"
-    },
+      "created_at": "2023-03-01",
+      "description": "Зарплата за февраль",
+	   "update_at":""
+    }
+  ],
+
+  "expense_transactions": [
     {
       "id": "2",
       "user_id": 1,
       "account_id": 2,
       "category_id": 2,
-      "amount": -1500,
-      "date": "2023-03-05",
-      "description": "Покупка одежды"
+      "amount": 1500,
+      "created_at": "2023-03-05",
+      "description": "Покупка одежды",
+	   "update_at":""
     },
     {
       "id": "3",
       "user_id": 2,
       "account_id": 3,
       "category_id": 3,
-      "amount": -200,
-      "date": "2023-03-10",
-      "description": "Поход в кино"
+      "amount": 200,
+      "created_at": "2023-03-10",
+      "description": "Поход в кино",
+	   "update_at":""
     }
   ],
+
   "icons": {
     "Финансы": [
       {
@@ -993,27 +981,16 @@
   ],
   "sessions": [
     {
-      "id": "012",
-      "hash": "1154632034654as015",
-      "user_id": "4852"
+      "id": "4b3e",
+      "hash": "0.48196484104283632277088145201560109853744506835938",
+      "user_id": "1",
+      "went_at": "09.06.2025 22:44:16"
     },
     {
-      "id": "ffb0",
-      "hash": "0.49070170224325981855884037940995767712593078613281",
-      "user_id": "1",
-      "went_at": "07.06.2025 15:58:34"
-    },
-    {
-      "id": "cddb",
-      "hash": "0.71914991532332028789653577405260875821113586425781",
-      "user_id": "1",
-      "went_at": "09.06.2025 17:29:08"
-    },
-    {
-      "id": "9c05",
-      "hash": "0.19263684808384817781501396893872879445552825927734",
-      "user_id": "1",
-      "went_at": "09.06.2025 21:36:42"
+      "id": "488d",
+      "hash": "0.49912761609663491846333727153250947594642639160156",
+      "user_id": "c5e7",
+      "went_at": "10.06.2025 10:28:36"
     }
   ]
 }

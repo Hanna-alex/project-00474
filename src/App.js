@@ -10,6 +10,7 @@ import {
 	Account,
 	Categories,
 	Category,
+	HistoryOperations,
 } from './pages'
 import { selectUserSession } from './selectors'
 
@@ -21,7 +22,7 @@ export const App = () => {
 	const dispatch = useDispatch()
 
 	useLayoutEffect(() => {
-		const currentUserSessionJson = sessionStorage.getItem('userSession')
+		const currentUserSessionJson = localStorage.getItem('userSession')
 		if (!currentUserSessionJson) return
 
 		const currentUserSession = JSON.parse(currentUserSessionJson)
@@ -51,7 +52,7 @@ export const App = () => {
 								<Route path='change' element={<Account />}></Route>
 								<Route path='add' element={<Account />}></Route>
 							</Route>
-							<Route path='/history' element={<div>История операций</div>} />
+							<Route path='/history' element={<HistoryOperations />} />
 							<Route path='/categories' element={<Categories />}>
 								<Route path=':action' element={<Category />} />
 							</Route>

@@ -128,7 +128,7 @@ const AccountContainer = ({ className }) => {
 					/>
 				</div>
 				<div>
-					<label className='label'>Иконки</label>
+					<H3 className='label'>Иконки</H3>
 					<div className='checkbox-group'>
 						{icons.map((icon) => (
 							<div className='checkbox-box' key={icon.id}>
@@ -207,6 +207,8 @@ export const Account = styled(AccountContainer)`
 	}
 
 	& .label {
+		font-size: 16px;
+		font-weight: 400;
 		margin-bottom: 8px;
 	}
 
